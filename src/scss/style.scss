@@ -1,0 +1,393 @@
+@use "sass:math";
+@use  "base/_mixins" as *;
+@use "base/variables" as *;
+@use "base/null";
+@use "base/_functions" as *;
+// Підключення базових стилів, шаблонів (заготівель) та допоміжних класів
+// Для підключення/вимкнення конкретних стилів дивись base.scss
+// @use "base";
+
+
+// Якщо є локальні шрифти
+// @font-face {
+//     font-family: "Daneehand";
+//     src: url("../fonts/DaneehandReg.woff2") format("woff2"),
+//     url("../fonts/DaneehandReg.woff") format("woff");
+//     font-weight: normal;
+//     font-style: normal;
+//     font-display: swap;
+// }
+
+// @function rem($px) {
+// 	$result: math.div($px, 16) + rem;
+// 	@return $result;
+// }
+// @include mixins.fonts(Daneehand,DaneehandReg,500, normal);
+// @include mixins.fonts(minecraft-ten,minecraft-ten-font-cyrillic,500, cyrillic);
+
+// @include mixins.image-set("../img/products/02.png", 0);
+
+// ============================================================================================================================================================================================================================================================================================================================================================================================
+// Налаштування шаблону ============================================================================================================================================================================================================================================================================================================================================================================================
+// ============================================================================================================================================================================================================================================================================================================================================================================================
+
+
+
+
+// Підключення стилів загальних елементів проекту
+@use "common";
+
+// Підключення стилів окремих блоків
+@use "header";
+@use "footer";
+
+// Підключення стилів окремих сторінок
+@use "home";
+.body{
+	margin: 0 auto;
+
+}
+.wrapper {
+	min-height: 100%;
+	// display: flex;
+	// flex-direction: column;
+	overflow: hidden;
+	margin: 0 auto;
+	@supports (overflow: clip) {
+		overflow: clip;
+	}
+
+	// Притискаємо footer
+	>main {
+		flex: 1 1 auto;
+	}
+
+	// Фікс для слайдерів
+	>* {
+		min-width: 0;
+	}
+}
+
+.page{
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+.tea-shop{
+	display: flex;
+	position: relative;
+	width: 100%;
+	// height: 813px;
+	// @include image-set("../img/Background.png", 0);
+	background-color: rgba(114, 106, 81, 1);
+	// background-color: #726a51;
+	opacity: 1;
+	z-index: 8;
+	order: 1;
+
+}
+
+.tea-shop::before{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	// @include image-set("../img/Texture.png", 0);
+	// background-image: url("../img/icons/sprite.svg#Texture");
+	background-image: url("../img/Texture3.png");
+	background-position: top;
+	background-size:auto;
+	background-repeat: no-repeat;
+	// background-clip: content-box;
+	opacity: 1;
+	// mix-blend-mode: multiply;
+	// background-blend-mode: multiply; 
+	// filter:contrast(0.5);
+// 	filter:grayscale(3%);
+// transform: scale(2);
+z-index: 9;
+
+order: 2;
+}
+
+.tea-shop::after{
+	position: absolute;
+	content: "";
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: #000;
+	opacity: 0.150;
+	order: 3;
+
+}
+.tea-shop__container{
+	z-index: 20;
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	text-align: left;
+	@include adaptiveValue("padding-top",200,74 );
+	@include adaptiveValue("padding-bottom", 219, 50);
+
+	@media (max-width:$tablet){
+		&{
+			flex-direction:column;
+			align-items:center;
+			gap:30px;
+		}
+	}
+	// &::after{
+	// 	position: absolute;
+	// 	content: '';
+		
+	// 	bottom: 0;
+	// 	right: 0;
+	// 	// @include adaptiveValue("bottom", 210,150);
+	// 	// @include adaptiveValue("right", 165,200);
+	// 	transform: rotate(-5deg);
+	// 	transform: translate(50px, 50px);
+
+	// 	@media (max-width:$tablet){
+	// 	&{
+	// 		// bottom: 70px;
+	// 		// right: 348px;
+	// 		@include adaptiveValue("right", 500,170);
+	// 		@include adaptiveValue("bottom", 90,10);
+
+	// 	}
+	// 	}
+	// 	@media (max-width:$mobile){
+	// 	&{
+	// 		display: none;
+	// 	}
+	// 	}
+	// }
+}
+
+.tea-shop__image {
+	position:relative;
+	flex: 1 1 50%;
+	display: flex;
+	justify-content: end;
+	picture{
+		position: relative;
+		display: block;
+		width: 100%;
+		@include adaptiveValue("max-width", 536,200);
+		height: 100%;
+
+		img,source{
+				max-width: 100%;
+				width: 100%;
+				height: 100%;
+				object-fit:cover;
+				// aspect-ratio: 1/1.5;
+			}
+		@media (max-width:$tablet){
+			&{
+				max-width: 536px;
+			}
+		}
+
+		&::after{
+			position: absolute;
+			content: '';
+			@include image-set("../img/cup1.png", 0);
+			background-position: 0;
+			background-size: contain;
+			background-repeat: no-repeat;
+			@include adaptiveValue("width", 46,20);
+			@include adaptiveValue("height",65,40);
+			@include adaptiveValue("right", 145, 100);
+			@include adaptiveValue("bottom", -80, -50);
+
+			@media (max-width:425.98px){
+				&{
+					display: none;
+				}
+			}
+		}
+	}
+	&::before,
+	&::after{
+		position:absolute;
+		content:'';
+	}
+
+
+	&::before{
+		// display: flex;
+
+		// @include adaptiveValue("bottom", -60,130);
+		// @include adaptiveValue("right", 338,150);
+		@include adaptiveValue("left", 90, 0, 1, 1440, 992);
+		@include adaptiveValue("left", -125, -100, 1, 991.98, 767.98);
+		// @include adaptiveValue("", , ,1, , , )
+
+		bottom: -54px;
+		// right: -100%;
+
+		@include adaptiveValue("width", 330,100);
+		@include adaptiveValue("height", 262, 100);
+		@include image-set("../img/flowers.png", 0);
+		background-size: cover;
+		background-position: 0;
+		background-repeat: no-repeat;
+	
+
+		z-index: -8;
+		order: -8;
+		@media (min-width:1441px){
+		&{
+			left: 90px;
+		}
+		}
+		@media (max-width:766px){
+			&{
+				display: none;
+			}
+		}
+	}
+	&::after{
+		@include adaptiveValue("width", 210, 110);
+		@include adaptiveValue("height", 178, 78);	
+		right: -4.1%;
+		bottom: -6%;
+		@include image-set("../img/kettle.png", 0);
+		background-size: contain;
+		background-position: 0;
+		background-repeat: no-repeat;
+
+		@media (max-width:425.98px){
+			&{
+				display: none;
+			}
+		}
+	}
+}
+
+.information-container {
+	position: relative;
+	flex: 0 1 50%;
+	display: flex;
+	flex-direction: column;
+	color: #c4d702;
+	max-width: 535px;
+	@include adaptiveValue("font-size", 90,32);
+	line-height: calc(98/90);
+
+	&::before,
+	&::after{
+		content: "";
+		position: absolute;
+		@include image-set("../img/cup1.png", 0);
+		background-size: contain;
+		background-position: right;
+		background-repeat: no-repeat;
+	}
+
+	&::before{
+		top: em(-25, 90);
+		left: em(510, 90);
+		@include adaptiveValue("width", 49,20);
+		@include adaptiveValue("height", 69, 40);
+		z-index: 30;
+		@media (max-width:$mobileSmall){
+			&{
+				display: none;
+			}
+		}
+	}
+	&::after{
+		@include adaptiveValue("width", 52,20);
+		@include adaptiveValue("height", 68,36);
+		z-index: 30;
+		transform: rotate(-15deg);
+		left: em(567, 90);
+
+		@media (max-width:$mobileSmall){
+			&{
+				display: none;
+			}
+		}
+	}
+
+	@media (max-width:$tablet){
+		&{
+			max-width:100%;
+		}
+	}
+	@media (max-width:766px){
+	&{
+		line-height: 1.4;
+	}
+	}
+
+	// .information-container__name
+	&__name {
+		font-weight: 400;
+		font-family: "Forum";
+		p{
+			@include adaptiveValue("font-size", 40,20);
+			line-height: calc(45/40);
+			
+		}
+	}
+	// .information-container__description
+
+	&__description{
+		font-size: 14px;
+		line-height: calc(20/14);
+		font-weight: 400;
+		font-family: "Roboto";
+		height: auto;
+		// @include adaptiveValue("margin-top", 25,5);
+		margin-top: 25px;
+		
+		@media (max-width:766px){
+			&{
+				line-height: 1.5;
+			}
+			}
+		& p:first-child{
+			@include adaptiveValue("font-size", 28,16);
+			line-height: 1.5;
+			font-weight: 600;
+			font-family: "Forum";
+			@include adaptiveValue("margin-bottom", 16,8);
+		}
+
+		.description__button {
+			// @include adaptiveValue("margin-top", 23, 10) 
+			margin-top: 24px;
+		}
+	}
+}
+
+
+.button {
+	width: rem(155);
+	height: rem(38);
+	background-color: #c2d502;		
+	border-radius: 19px;
+	font-size: 21px;
+	line-height: 120%;
+	color: #726a51;
+	font-weight: 400;
+	font-family: "Forum";
+	transition: 0.3s ease;
+
+	&:hover{
+		background-color: rgba(114, 106, 81, 1);
+		color: #c2d502;
+		transition: 0.3s ease;
+	}
+}
+
