@@ -48,11 +48,38 @@
 
 }
 .wrapper {
+	position: relative;
 	min-height: 100%;
-	// display: flex;
-	// flex-direction: column;
+	display: flex;
+	flex-direction: column;
 	overflow: hidden;
 	margin: 0 auto;
+	// background-color: rgb(114, 106, 81);
+	background-color: hsl(45, 17%, 50%);
+
+	&::before{
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		// @include image-set("../img/Texture.png", 0);
+		// background-image: url("../img/icons/sprite.svg#Texture");
+		background-image: url("../img/Texture3.png");
+		background-position: top;
+		background-size:auto;
+		background-repeat: no-repeat;
+		// background-clip: content-box;
+		opacity: 1;
+		// mix-blend-mode: multiply;
+		// background-blend-mode: multiply; 
+		// filter:contrast(0.5);
+	// 	filter:grayscale(3%);
+	// transform: scale(2);
+	z-index: 9;
+	}
+
 	@supports (overflow: clip) {
 		overflow: clip;
 	}
@@ -72,44 +99,18 @@
 	display: flex;
 	width: 100%;
 	flex-direction: column;
+	z-index: 10;
+	
+
 }
 .tea-shop{
-	display: flex;
+	// display: flex;
 	position: relative;
 	width: 100%;
 	// height: 813px;
-	// @include image-set("../img/Background.png", 0);
-	background-color: rgba(114, 106, 81, 1);
-	// background-color: #726a51;
 	opacity: 1;
 	z-index: 8;
-	order: 1;
 
-}
-
-.tea-shop::before{
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	// @include image-set("../img/Texture.png", 0);
-	// background-image: url("../img/icons/sprite.svg#Texture");
-	background-image: url("../img/Texture3.png");
-	background-position: top;
-	background-size:auto;
-	background-repeat: no-repeat;
-	// background-clip: content-box;
-	opacity: 1;
-	// mix-blend-mode: multiply;
-	// background-blend-mode: multiply; 
-	// filter:contrast(0.5);
-// 	filter:grayscale(3%);
-// transform: scale(2);
-z-index: 9;
-
-order: 2;
 }
 
 .tea-shop::after{
@@ -121,9 +122,7 @@ order: 2;
 	height: 100%;
 	z-index: 10;
 	background-color: #000;
-	opacity: 0.150;
-	order: 3;
-
+	opacity: 0.4;
 }
 .tea-shop__container{
 	z-index: 20;
@@ -183,7 +182,7 @@ order: 2;
 		@include adaptiveValue("max-width", 536,200);
 		height: 100%;
 
-		img,source{
+		img{
 				max-width: 100%;
 				width: 100%;
 				height: 100%;
@@ -243,7 +242,6 @@ order: 2;
 	
 
 		z-index: -8;
-		order: -8;
 		@media (min-width:1441px){
 		&{
 			left: 90px;
@@ -373,6 +371,7 @@ order: 2;
 
 
 .button {
+	display: block;
 	width: rem(155);
 	height: rem(38);
 	background-color: #c2d502;		
@@ -390,4 +389,195 @@ order: 2;
 		transition: 0.3s ease;
 	}
 }
+// =========================================================
+.we-do {
+	padding-top: 142px;
+	padding-bottom: 171px;
+	@include adaptiveValue("padding-top", 142,50);
+	@include adaptiveValue("padding-bottom",171, 50);
+	&__container{
+		position: relative;
+		display: flex;
+		gap: 5px;
 
+		@media (max-width:1024px){
+			&{
+				flex-direction: column;
+				gap: 50px;
+			}
+		}
+
+		&::before,
+		&::after{
+			position: absolute;
+			content: '';
+			background-repeat: no-repeat;
+			background-position: top;
+
+			@media (max-width:540px){
+				&{
+					display: none;
+				}
+			}
+		}
+		&::before{
+			@include image-set("../img/cup1.png", 0);
+			background-size: contain;
+			@include adaptiveValue("width", 46,20);
+			aspect-ratio: 46/65;
+			right: 90px;
+			top: -5px;
+			filter: brightness(1.5);
+			transform: rotate(10deg);
+			@media (max-width:1024px){
+			&{
+				top: auto;
+				bottom: 155px;
+				// right: 80px;
+				@include adaptiveValue("right", 80,65, 0, 1024, 541);
+			}
+			}
+		}
+		&::after{
+			@include image-set("../img/cup1.png", 0);
+			background-size: contain;
+			@include adaptiveValue("width", 46,20);
+			aspect-ratio: 46/65;
+			filter: brightness(1.5);
+			right: 40px;
+			top: 30px;
+			transform: rotate(-5deg);
+			@media (max-width:1024px){
+					&{
+						top: auto;
+						bottom: 125px;
+					}
+				}
+		}
+	}
+
+		// .we-do__images-container
+
+	&__images-container {
+		position: relative;
+		flex: 0 1 58%;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: row;
+		@include adaptiveValue("gap", 30, 10,0,1440,1025);
+
+		@media (max-width:1024px){
+			&{
+				justify-content: center;
+				align-items: center;
+				gap: 20px;
+			}
+		}
+		@media (max-width:$mobile){
+			&{
+				flex-direction: column;
+				align-items: normal;
+			}
+		}
+		@media (max-width:425px){
+			&{
+				align-items: center;
+			}
+		}
+
+		&::after{
+			position: absolute;
+			content: '';
+			top: -50px;
+			right: -50px;
+			width: 330px;
+			@include adaptiveValue("width", 330,100);
+			aspect-ratio: 330 / 262;
+			@include image-set("../img/flowers.png", 0);
+			background-size:cover;
+			background-position: 0;
+			background-repeat: no-repeat;
+			z-index: -1;
+
+			@media (max-width:1024px){
+				&{
+					@include adaptiveValue("right", 75,-50, 0, 1024, 769);
+				}
+			}
+			@media (max-width:$mobile){
+			&{
+				display: none;
+			}
+			}
+		}
+
+		picture{
+			display: flex;
+			position: relative;
+
+			&:first-child::before,
+			&:first-child::after{
+				position: absolute;
+				content: '';
+				background-repeat: no-repeat;
+				background-position: top;
+				transform: scaleX(-1);
+				@media (max-width:$mobile){
+				&{
+					display: none;
+				}
+				}
+			}
+			&:first-child::before{
+				@include adaptiveValue("width", 210,152, 0, 1440, 768);
+				aspect-ratio: 210/178;
+				bottom: -55px;
+				left: -7%;
+				@include image-set("../img/kettle.png", 0);
+				background-size: contain;
+			}
+			&:first-child::after{
+				@include image-set("../img/cup1.png", 0);
+				background-size: contain;
+				@include adaptiveValue("width", 46,20);
+				aspect-ratio: 46/65;
+				top: calc(100% + 50px);
+				@include adaptiveValue("left", 150, 100, 0, 1440, 768);
+				filter: brightness(1.5);
+			}
+		}
+
+		img{
+			display: block;
+			width: 100%;
+			object-fit: cover;
+		}
+	
+	}
+
+	// .we-do__text
+
+	&__text {
+		flex: 0 1 42%;
+		align-self: center;
+		text-align: center;
+		color: #c4d702;
+		font-weight: 400;
+
+		h2{
+			font-family: "Forum";
+			@include adaptiveValue("font-size", 90,32);
+			line-height: calc(98/90);
+		}
+		p{
+			font-size: 14px;
+			line-height: calc(20/14);
+			font-family: "Roboto";
+			@include adaptiveValue("margin-top", 30,15);
+			}
+
+		button{
+			margin: 25px auto 0 auto;
+		}
+	}
+}
