@@ -581,3 +581,137 @@
 		}
 	}
 }
+
+// ==============================================================
+.relaxing-tea {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+
+	@media (max-width:$mobile){
+		&{
+			flex-direction: column-reverse;
+			gap: 20px;
+		}
+	}
+	// .relaxing-tea__text-block
+	&__text-block {
+		flex: 0 1 50%;
+		z-index: 20;
+
+		// width: 1347px;
+	}
+
+	// .relaxing-tea__image
+	&__image{
+		flex: 0 1 50%;
+		display: flex;
+		justify-content: flex-end;		
+		z-index: 20;
+
+		picture img{
+			width: 100%;
+			aspect-ratio: 715 / 910;
+			object-fit: cover;
+		}
+
+		@media (max-width:$mobile){
+			&{
+				justify-content: center;
+			}
+		}
+	}
+
+	&::after{
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		background-color: #000;
+		opacity: 0.4;
+	}
+}
+	.text-block{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		// justify-content: space-around;
+		justify-content:center;
+		align-items: center;
+		text-align: center;
+
+		font-size: 14px;
+			line-height: calc(20/14);
+			color: #c4d702;
+			font-weight: 400;
+			font-family: "Roboto";
+
+		// text-block__text
+		margin-bottom: 87px;
+		&__text{
+			max-width: 470px;
+
+			h3{
+				@include adaptiveValue("font-size", 90,32);
+				line-height: calc(98/90);
+				font-family: "Forum";
+				margin-bottom: 20px;
+			}
+		}
+
+			// relaxing-tea-link
+		.relaxing-tea__link{
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+
+			// font-size: 14px;
+			// line-height: 20px;
+			// color: #c4d702;
+			// font-weight: 400;
+			// font-family: "Roboto";
+			// text-align: center;
+			&::before{
+				position: absolute;
+				content: '';
+				width: 0;
+				height: 2px;
+				background-color: #c4d702;
+				bottom: -5px;
+				left: -50%;
+			}
+			&:hover{
+				&::before{
+					position: absolute;
+					content: '';
+					width: 200%;
+					height: 2px;
+					background-color: #c4d702;
+					bottom: -5px;
+					left: -50%;
+					transition: width 0.3s ease;
+				}
+			}
+		}
+		// text-block__link
+		// &__link {
+		// 	// align-self: flex-end;
+		// 	// align-items: flex-end;
+		// 	// justify-content: flex-end;
+		// 	// justify-self: flex-end;
+		// 	display: flex;
+		// 	align-items: flex-end;
+		// 	justify-content: flex-end;
+		// 	flex-direction: column-reverse;
+		// }
+	}
+
+
+
+
+
+
