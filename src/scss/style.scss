@@ -554,7 +554,40 @@
 	position: relative;
 	display: flex;
 	justify-content: space-between;
+	gap: 10px;
 
+	&::before{
+		position: absolute;
+		content: "";
+		@include adaptiveValue("width", 210, 100);
+		@include adaptiveValue("height", 178, 68);	
+		left: 50%;
+		transform: translateX(-50%);
+		@include adaptiveValue("bottom", 100,-10, 0, 1440, 769);
+		@include image-set("../img/kettle.png", 0);
+		background-size: contain;
+		background-position: 0;
+		background-repeat: no-repeat;
+		z-index: 50;
+
+		@media (max-width:$mobile){
+			&{
+				display: none;
+			}
+		}
+	}
+
+	&::after{
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		background-color: #000;
+		opacity: 0.4;
+	}
 
 	@media (max-width:$mobile){
 		&{
@@ -582,7 +615,7 @@
 	// relaxing-tea__link
 	&__link{
 		position: absolute;
-		bottom: 100px;
+		// bottom: 100px;
 		@include adaptiveValue("bottom", 100,10, 0, 1024, 769);
 		font-size: 1rem;
 		line-height: calc(16/20);
@@ -613,11 +646,40 @@
 
 	// relaxing-tea__image
 	&__image{
+		position: relative;
 		flex: 0 1 50%;
 		display: flex;
 		justify-content: flex-end;		
 		z-index: 20;
 
+		&::before{
+			position: absolute;
+			content: '';
+			// top: 0;
+			// left: 0;
+
+			// @include adaptiveValue("left", 140, 0, 1, 1440, 991.98);
+			// @include adaptiveValue("left", -100, -100, 0, 1440, 991);
+			// @include adaptiveValue("left", -125, -100, 1, 991.98, 767.98);
+			// bottom: -54px;	
+			// left: -100%;
+			left: 0;
+			transform: translateX(-50%);
+			top: 0;
+			@include adaptiveValue("width", 330,100);
+			@include adaptiveValue("height", 262, 100);
+			@include image-set("../img/flowers.png", 0);
+			background-position: 0;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: -1;
+
+			@media (max-width:990px){
+				&{
+					display: none;
+				}
+			}
+		}
 		& img{
 			aspect-ratio: 715 / 910;
 		}
@@ -627,18 +689,6 @@
 				justify-content: center;
 			}
 		}
-	}
-
-	&::after{
-		position: absolute;
-		content: "";
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 10;
-		background-color: #000;
-		opacity: 0.4;
 	}
 
 }
