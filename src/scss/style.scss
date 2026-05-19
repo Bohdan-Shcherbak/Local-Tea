@@ -39,7 +39,7 @@
 		background-image: url("../img/Texture3.png");
 		background-position: top;
 		background-size:auto;
-		background-repeat: no-repeat;
+		background-repeat: repeat;
 		// background-clip: content-box;
 		opacity: 1;
 		// mix-blend-mode: multiply;
@@ -349,7 +349,9 @@
 		@include adaptiveValue("font-size", 28,16);
 		line-height: 1.5;
 		font-weight: 600;
-		@include adaptiveValue("margin-bottom", 16,8);
+		&--indented{
+			@include adaptiveValue("margin-bottom", 16,8);
+		}
 	}
 
 	// .information-container__description
@@ -383,7 +385,7 @@
 
 		@media (max-width:1024px){
 			&{
-				flex-direction: column;
+				flex-direction: column-reverse;
 				gap: 50px;
 			}
 		}
@@ -591,11 +593,13 @@
 
 	@media (max-width:$mobile){
 		&{
-			flex-direction: column-reverse;
-			gap: 20px;
+			flex-direction: column;
+			gap: 50px;
 			padding-left: 20px;
 			padding-right: 20px;
-			padding-bottom: 100px;
+			@include adaptiveValue("gap", 50,20);
+			@include adaptiveValue("padding-top", 80, 50);
+			@include adaptiveValue("padding-bottom", 100,60);
 		}
 	}
 
@@ -690,7 +694,138 @@
 			}
 		}
 	}
-
 }
+
+// ==============================================================
+
+.tea-made {
+	// padding-top: 195px;
+	// padding-bottom: 89px;
+	@include adaptiveValue("padding-top", 195,50);
+	@include adaptiveValue("padding-bottom",89, 50);
+
+	// .tea-made__list
+
+	&__list {
+		position: relative;
+		&::before,
+		&::after{
+			position: absolute;
+			content: '';
+			@include adaptiveValue("width", 330,100);
+			@include adaptiveValue("height", 262, 100);
+			@include image-set("../img/flowers.png", 0);
+			background-position: 0;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: -1;
+			@media (max-width:1365px){
+				&{
+					display: none;
+				}
+			}
+			
+			@media (max-width:1130px){
+				&{
+					display: block;
+				}
+			}
+			@media (max-width:649px){
+				&{
+					display: none;
+				}
+			}
+		}
+		&::before{
+			top: -100px;
+			left: 148px;
+			@include adaptiveValue("top", -100,-30);
+			
+			
+			@media (max-width:1130px){
+				&{
+					@include adaptiveValue("left", 235,125, 0, 1130, 650);
+				}
+			}
+		}
+		&::after{
+			@include adaptiveValue("right", 132, 95);
+			top: 90px;
+
+			@media (max-width:1130px){
+				&{
+					@include adaptiveValue("right", 240, 120, 0, 1130, 650);
+				}
+			}
+		}
+	}
+
+	button{
+		margin: 0 auto 0 auto;
+		@include adaptiveValue("margin-top", 68,40);
+	}
+}
+
+.list-tea-made {
+	display: flex;
+	justify-content:space-around;
+	gap: 30px 15px;
+	flex-wrap: wrap;
+
+	// .list-tea-made__item
+
+	&__item {
+		flex: 0 1 33.33%;
+		max-width: 347px;
+		min-width: 247px;
+		display: flex;
+		flex-direction: column;
+		// gap: 47px;
+		@include adaptiveValue("gap", 47,15, 0, 1440, 769);
+	}
+
+	// .list-tea-made__image
+
+	&__image {
+	}
+
+	// .list-tea-made__description
+
+	&__description {
+		gap:12px;
+
+		&::before,
+		&::after{
+			display: none;
+		}
+	}
+
+	// .list-tea-made__made-container
+
+	&__made-container {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
+	// list-tea-made__text-made
+	&__text-made{
+		flex: 1 1 50%;
+		border: 1px solid #444030;
+		border-left: 0px;
+		line-height: 2;
+		vertical-align: middle;
+	}
+	&__text-date{
+		flex: 1 1 50%;
+		line-height: 2;
+		border: 1px solid #444030;
+		border-right: 0px;
+		border-left: 0px;
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+
+
 
 
