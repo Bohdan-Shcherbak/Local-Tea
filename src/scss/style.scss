@@ -122,8 +122,7 @@
         font-size: 14px;
 		line-height: calc(20/14);
 		font-family: "Roboto";
-		margin-top: 20px;
-		@include adaptiveValue("margin-top", 20,10);
+		@include adaptiveValue("margin-top", 20,15);
     }
 }
 
@@ -823,6 +822,235 @@
 		border-left: 0px;
 		text-align: center;
 		vertical-align: middle;
+	}
+}
+
+// ------------------------------------------------------------------
+
+.products {
+	position: relative;
+	display: flex;
+	@include adaptiveValue("padding-top", 190,50);
+	@include adaptiveValue("padding-bottom", 146,50);
+
+	&::after{
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		background-color: #000;
+		opacity: 0.4;
+	}
+
+	// .products__container
+	&__container {
+		// display: flex;
+		z-index: 20;
+		position: relative;
+
+
+		&::before{
+			position: absolute;
+			content: '';
+			top: 0;
+			left: 10%;
+			@include image-set("../img/kettle.png", 0);
+			background-position: 0;
+			background-size: contain;
+			background-repeat: no-repeat;
+			z-index: 30;
+			@include adaptiveValue("width", 243, 90);
+			@include adaptiveValue("height", 206, 58);	
+			transform: scaleX(-1) translateY(-50%);
+
+			@media (max-width:$mobile){
+				&{
+					display: none;
+				}
+			}
+		}
+
+	}
+
+	// .products__title
+
+	&__title {
+		position: relative;
+		@include adaptiveValue("font-size", 90,32);
+	    line-height: calc(98/90);
+		color: #c4d702;
+		font-weight: 400;
+		font-family: "Forum";
+		text-align: center;
+
+		&::before,
+		&::after{
+			position: absolute;
+			content: '';
+		}
+
+		&::before{
+			@include image-set("../img/cup2.png", 0);
+			background-position: 0;
+			background-size: contain;
+			background-repeat: no-repeat;
+			@include adaptiveValue("width", 53,20);
+			@include adaptiveValue("height",75,40);
+			// @include adaptiveValue("right", 145, 100);
+			// @include adaptiveValue("bottom", -80, -50);
+			bottom: -10px;
+			right: 20%;
+
+			@media (max-width:$mobile){
+				&{
+					display: none;
+				}
+			}
+		}
+		&::after{
+			@include image-set("../img/cup1.png", 0);
+			background-position: 0;
+			background-size: contain;
+			background-repeat: no-repeat;
+			@include adaptiveValue("width", 53,20);
+			@include adaptiveValue("height",75,40);
+			// @include adaptiveValue("right", 145, 100);
+			// @include adaptiveValue("bottom", -80, -50);
+			bottom: -25px;
+			right: 15%;
+
+			@media (max-width:$mobile){
+				&{
+					display: none;
+				}
+			}
+		}
+		
+	}
+
+	// .products__list
+
+	&__list {
+		// margin-top: 150px;
+		@include adaptiveValue("margin-top", 150,50);
+	}
+}
+
+.products-image-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	// gap: 130px 20px;
+	column-gap: 30px;
+	
+	@include adaptiveValue("row-gap", 130,50);
+
+	@media (max-width:$mobile){
+	&{
+		flex-direction: column;
+		align-items:center;
+	}
+	}
+
+	// .products-image-list__item
+
+	&__item {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		@include adaptiveValue("gap", 66, 30);
+		flex: 0 1 calc(50% - 15px);
+		max-width: 562px;
+	}
+
+	// .products-image-list__image
+
+	&__image {
+		&::before{
+			position: absolute;
+			content: '';
+			@include adaptiveValue("width", 330,100);
+			@include adaptiveValue("height", 262, 100);
+			@include image-set("../img/flowers.png", 0);
+			background-position: 0;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: -1;
+		}
+		picture{
+			width: 100%;
+		}
+	}
+
+	// .products-image-list__text
+
+	&__text {
+		color: #c4d702;
+		font-weight: 400;
+		text-align: left;
+	}
+	&__title {
+		// font-size: 47px;
+		@include adaptiveValue("font-size", 47,20);
+
+		line-height: calc(111/47);
+		font-family: "Forum";
+	}
+	&__description{
+		font-size: 14px;
+		line-height: calc(20/14);
+		font-family: "Roboto";
+		max-height: 65px;
+		overflow: hidden;
+		@media (max-width:$mobile){
+			&{
+				max-height:max-content;
+			}
+		}
+
+	}
+}
+.one{
+	&::before{
+			// left: -50px;
+			left: -5%;
+			top: 0;
+			transform: translateY(145%);
+		}
+}
+.two{
+	&::before{
+			// left: -50px;
+			left: -10%;
+			top: -5%;
+			// transform: translateY(145%);
+		}
+}
+.three{
+	&::after{
+			position: absolute;
+			content: '';
+			@include adaptiveValue("width", 330,100);
+			@include adaptiveValue("height", 262, 100);
+			@include image-set("../img/flowers.png", 0);
+			background-position: 0;
+			background-size: cover;
+			background-repeat: no-repeat;
+			z-index: -1;
+			right: -10%;
+			top: -8%;
+	}
+}
+.four{
+	&::before{
+		right: 51%;
+		bottom: 0;
+		transform: translateY(-200px);
 	}
 }
 
