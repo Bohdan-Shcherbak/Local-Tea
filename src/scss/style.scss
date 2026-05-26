@@ -103,25 +103,31 @@
 	}
 }
 
+h2{
+	@include adaptiveValue("font-size", 90,32);
+	line-height: calc(98/90);
+	font-family: "Forum";
+	text-align: center;
+	
+
+}
 .text-block {
     color: #c4d702;
 	text-align: center;
 	font-weight: 400;
+	font-size: 14px;
+	line-height: calc(20/14);
+	font-family: "Roboto";
 
     // .text-block__title
 
     &__title {
-        @include adaptiveValue("font-size", 90,32);
-	    line-height: calc(98/90);
-		font-family: "Forum";
+
     }
 
     // .text-block__text
 
     &__text {
-        font-size: 14px;
-		line-height: calc(20/14);
-		font-family: "Roboto";
 		@include adaptiveValue("margin-top", 20,15);
     }
 }
@@ -851,7 +857,6 @@
 		z-index: 20;
 		position: relative;
 
-
 		&::before{
 			position: absolute;
 			content: '';
@@ -872,19 +877,14 @@
 				}
 			}
 		}
-
 	}
 
 	// .products__title
 
 	&__title {
 		position: relative;
-		@include adaptiveValue("font-size", 90,32);
-	    line-height: calc(98/90);
 		color: #c4d702;
 		font-weight: 400;
-		font-family: "Forum";
-		text-align: center;
 
 		&::before,
 		&::after{
@@ -987,7 +987,7 @@
 		}
 	}
 
-	// .products-image-list__text
+	// .products-image-list
 
 	&__text {
 		color: #c4d702;
@@ -1054,6 +1054,178 @@
 	}
 }
 
+// ------------------------------------------------------------
+.arrivals {
+
+	// .arrivals__container
+
+	&__container {
+		display: flex;
+		justify-content:space-between;
+		align-items: center;
+		gap: 15px;
+	
+		@include adaptiveValue("padding-top", 117, 50);
+		@include adaptiveValue("padding-bottom", 143, 60);
+
+		@media (max-width:$mobile){
+			&{
+				justify-content: center;
+				@include adaptiveValue("gap", 20,15);
+			}
+		}
+	}
 
 
+	// .arrivals__title
+
+	&__title {
+		writing-mode:sideways-lr;
+		flex: 0 1 18.333%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// padding-left: 10px;
+		// padding-right: 10px;
+	}
+
+	// .arrivals__list
+
+	&__list {
+		// justify-content: last baseline;
+
+		// margin-top: 70px;
+		// margin-bottom: 70px;
+		position: relative;
+		height: 100%;
+		display: flex;
+
+		@media (max-width:$mobile){
+			&{
+				flex-direction: column;
+				// align-items: center;
+				// justify-content: center;
+			}
+		}
+
+		&::before,
+		&::after{
+			position: absolute;
+			content: '';
+			background-repeat: no-repeat;
+			background-position: top;
+
+			@media (max-width:992px){
+				&{
+					display: none;
+				}
+			}
+			@media (max-width:$mobile){
+				&{
+					display: block;
+				}
+			}
+			@media (max-width:424px){
+				&{
+					display: none;
+				}
+			}
+		}
+		&::before{
+			@include image-set("../img/cup1.png", 0);
+			background-size: contain;
+			@include adaptiveValue("width", 72,20);
+			aspect-ratio: 72/94;
+			right: 9%;
+			bottom: -25px;
+			filter: brightness(1.5);
+			transform: rotate(10deg);
+		}
+
+		&::after{
+			@include image-set("../img/cup1.png", 0);
+			background-size: contain;
+			@include adaptiveValue("width", 62,20);
+			aspect-ratio: 62/90;
+			filter: brightness(1.5);
+			// right: 40px;
+			right: 2.5%;
+			bottom: -25px;
+			transform: rotate(-5deg) translateY(50%);
+
+			@media (max-width:$mobile){
+				&{
+					right: 1%;
+
+				}
+			}
+			// @media (max-width:1024px){
+			// 	&{
+			// 		top: auto;
+			// 		bottom: 125px;
+			// 	}
+			// }
+		}
+	}
+}
+.list-arrivals {
+	gap: 26px;
+	@include adaptiveValue("gap", 26, 10, 1, 1440, 800);
+	// .list-arrivals__item
+
+	&__item {
+		max-width: 459px;
+		display: flex;
+		flex-direction: column;
+		justify-content:space-between;
+		align-items: start;
+		max-height: 511px;
+		gap: 39px;
+		@include adaptiveValue("gap", 39,20);
+	}
+	
+	// .list-arrivals__image
+
+	&__image {
+		display: block;
+		border: 5px solid #000000;
+		img{
+			width: 100%;
+		}
+		
+	}
+	
+
+	// .list-arrivals__text-block
+
+	&__text-block {
+		color: #c4d702;
+		font-weight: 400;
+		max-width: 289px;
+	}
+
+	// .list-arrivals__title
+
+	&__title {
+		// margin-top: 39px;
+		font-size: 28px;
+		@include adaptiveValue("font-size", 28,20);
+		margin-bottom: em(15, 28);
+
+		// line-height: calc(106/28);
+		line-height: 1.2;
+		font-family: "Forum";
+	}
+	
+
+	// .list-arrivals__text
+
+	&__text {
+		// max-width: 872px;
+		max-height: 115px;
+		font-size: 14px;
+		line-height: 1.4;
+		font-family: "Roboto";
+	}
+}
 
