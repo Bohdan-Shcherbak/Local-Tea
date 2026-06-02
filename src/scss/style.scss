@@ -1199,7 +1199,6 @@ h2{
 	// .list-arrivals__text-block
 
 	&__text-block {
-		color: #c4d702;
 		font-weight: 400;
 		max-width: 289px;
 	}
@@ -1209,12 +1208,18 @@ h2{
 	&__title {
 		// margin-top: 39px;
 		font-size: 28px;
-		@include adaptiveValue("font-size", 28,20);
+		// @include adaptiveValue("font-size", 28,25, 0, 1440,768);
 		margin-bottom: em(15, 28);
 
 		// line-height: calc(106/28);
 		line-height: 1.2;
 		font-family: "Forum";
+
+		@media (max-width:$mobile){
+			&{
+				@include adaptiveValue("font-size", 28,20, 0, 768, 320);
+			}
+		}
 	}
 	
 
@@ -1229,3 +1234,301 @@ h2{
 	}
 }
 
+// --------------------------------------------------------
+.testimonials {
+	position: relative;
+	z-index: 5;
+	@include adaptiveValue("padding-top", 102, 50);
+	@include adaptiveValue("padding-bottom", 121, 60);
+	overflow: hidden;
+	
+	&::before,
+	&::after{
+		position: absolute;
+		content: "";
+	}
+	&::before{
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 10;
+		background-color: #000;
+		opacity: 0.4;
+	}
+	&::after{
+		@include adaptiveValue("width", 330,100);
+		@include adaptiveValue("height", 262, 100);
+		@include image-set("../img/flowers.png", 0);
+		background-size: cover;
+		background-position: 0;
+		background-repeat: no-repeat;
+		top: 0;
+		right: 0;
+		transform: translateX(50%);
+	
+	}
+
+	// .testimonials__container
+
+	&__container {
+		position: relative;
+		z-index: 20;
+	}
+
+	// .testimonials__title
+
+	&__title {
+	}
+
+	// .testimonials__list
+
+	&__list {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		width: 100%;
+		row-gap: 114px;
+		@include adaptiveValue("row-gap", 114,50);
+		// column-gap: 10px;
+		margin-top: 78px;
+		@include adaptiveValue("margin-top", 78,50);
+
+		@media (max-width:$mobile){
+			&{
+				flex-direction: column;
+			}
+		}
+
+		&::before{
+			position:absolute;
+			content:'';
+
+			@include adaptiveValue("width", 330,100);
+			@include adaptiveValue("height", 262, 100);
+			@include image-set("../img/flowers.png", 0);
+			background-size: cover;
+			background-position: 0;
+			background-repeat: no-repeat;
+
+			left: 0;
+			bottom: 0;	
+			transform: translate(-68%,70%);
+			clip-path: inset(0 0 25% 0); 
+			opacity: 0.4;
+
+			@media (max-width:767px){
+				&{
+					display: none;
+				}
+			}
+		}
+	}
+}
+.list-testimonials {
+
+	// .list-testimonials__item
+	&__item {
+		flex: 0 1 calc(50% - 10px);
+		max-width: 466px;
+		min-width: 200px;
+
+		font-weight: 400;
+		text-align: left;
+		overflow: hidden;
+	}
+
+	// .list-testimonials__title
+
+	&__title {
+		@include adaptiveValue("font-size", 43,20);
+		line-height: 1.1;
+		font-family: "Forum";
+	}
+
+	// .list-testimonials__text
+
+	&__text {
+		max-width: 451px;
+		max-height: 83px;
+		@include adaptiveValue("max-height", 83,70, 0, 1440, 768);
+
+
+		// font-size: 22px;
+		@include adaptiveValue("font-size", 22,14);
+
+		line-height: 1.4;
+		font-family: "Roboto";
+		@include adaptiveValue("margin-top", 35,10);
+		overflow: hidden;
+
+		@media (max-width:$mobile){
+				&{
+					@include adaptiveValue("max-height", 70,55, 0, 768, 320);
+				}
+			}
+	}
+}
+
+// --------------------------------------------------
+
+.your-email {
+	position: relative;
+	@include adaptiveValue("padding-top", 99,50);
+	@include adaptiveValue("padding-bottom", 77,50);
+
+	&::before,
+	&::after{
+			position: absolute;
+			content: '';
+			background-repeat: no-repeat;
+			background-position: top;
+			transform: scaleX(-1);
+
+			@media (max-width:$mobile){
+				&{
+					display: none;
+				}
+			}
+		}
+		&::before{
+			@include adaptiveValue("width", 172,122, 0, 1440, 768);
+			aspect-ratio: 172/146;
+			top: 50px;
+			
+			left: 3.3%;
+			// left: 47px;
+			@include image-set("../img/kettle.png", 0);
+			background-size: contain;
+		}
+
+		&::after{
+			@include image-set("../img/cup1.png", 0);
+			background-size: contain;
+			@include adaptiveValue("width", 38,20);
+			aspect-ratio: 38/53;
+			top: 43%;
+			@include adaptiveValue("left", 200,135, 0, 1440, 769);
+			filter: brightness(1.5);
+		}
+
+// .your-email__container
+
+		&__container {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			@include adaptiveValue("gap", 33,25);
+
+			&::before,
+			&::after{
+				position: absolute;
+				content: '';
+				@include image-set("../img/cup1.png", 0);
+				background-repeat: no-repeat;
+				background-position: top;
+				background-size: contain;
+
+	
+				@media (max-width:600px){
+					&{
+						display: none;
+					}
+				}
+			}
+			&::before{
+				@include adaptiveValue("width", 65,15);
+				aspect-ratio: 65/93;
+				right: 6%;
+				bottom: 33px;
+				filter: brightness(1.5);
+				transform: rotate(10deg);
+				@media (max-width:$mobile){
+					&{
+						top: -60px;
+						right: 10%;
+					}
+				}
+			}
+	
+			&::after{
+				@include adaptiveValue("width", 67,15);
+				aspect-ratio: 67/89;
+				filter: brightness(1.5);
+				// right: 40px;
+				// top: 30px;
+				
+				// @include adaptiveValue("right", 0,40);
+				right: 0.5%;
+				bottom: -5px;
+				transform: rotate(-10deg);
+				@media (max-width:$mobile){
+					&{
+						top: -20px;
+					}
+				}
+			}
+		}
+
+		// .your-email__title
+
+		&__title {
+		}
+
+		// .your-email__form
+
+		&__form {
+		}
+}
+.form-your-email {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	@include adaptiveValue("gap", 51,30);
+	width: 33.4%;
+
+	@media (max-width:$mobile){
+		&{
+			width: 90%;
+		}
+	}
+		// .form-your-email__input
+
+		&__input {
+			width: 100%;
+			// max-width: 442px;
+			height: 58px;
+			@include adaptiveValue("height", 58,38);
+			border: 2px solid #c1d502;
+			padding-left: 12px;
+			padding-right: 12px;
+			font-size: 30px;
+			line-height: 100%;
+			color: #fff;
+			font-weight: 400;
+			font-family: "Forum";
+			text-align: center;
+			vertical-align: middle;
+
+			&::placeholder{
+				font-size: 30px;
+				line-height: 100%;
+				color: #fff;
+				font-weight: 400;
+				font-family: "Forum";
+				text-align: center;
+				vertical-align: middle;
+				opacity: 0.4;
+			}
+
+			@media (max-width:$mobile){
+				&{
+					border: 1px solid #c1d502;
+				}
+			}
+		}
+}
