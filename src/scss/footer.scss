@@ -1,0 +1,148 @@
+@use "sass:math";
+@use  "base/_mixins" as *;
+@use "base/variables" as *;
+@use "base/null";
+@use "base/_functions" as *;
+
+// Підключення стилів загальних елементів проекту
+@use "common";
+
+
+// Підключення стилів окремих сторінок
+@use "home";
+
+.footer {
+    position: relative;
+    background-color: hsl(45, 17%, 50%);
+    @include adaptiveValue("padding-top", 91, 50);
+    @include adaptiveValue("padding-bottom", 81, 40);
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("../img/Texture3.png");
+            background-position: top;
+            background-size:auto;
+            background-repeat: repeat;
+            opacity: 1;
+            z-index: 9;
+	    }
+
+        &::after{
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: #000;
+            opacity: 0.4;
+	    }
+		// .footer__container
+
+		&__container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:normal;
+            z-index: 20;
+            font-family: "Forum";
+            font-weight: 400;
+		}
+
+		// .footer__nav
+
+		&__nav {
+            width: 100%;
+            height: auto;
+		}
+
+		// .footer__menu
+
+		&__menu {
+		}
+
+		// .footer__social
+
+		&__social {
+		}
+}
+.menu-footer {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px;
+		// .menu-footer__column
+
+		&__column {
+            font-size: 1rem;
+                        line-height: 1.4;
+
+		}
+
+		// .menu-footer__column-title
+
+		&__column-title {
+            font-size: 33px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+		}
+
+		// .menu-footer__submenu
+
+		&__submenu {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		// .menu-footer__submenu-item
+
+		&__submenu-item {
+		}
+
+		// .menu-footer__submenu-link
+
+		&__submenu-link {
+            position: relative;
+
+            &::before{
+				position: absolute;
+				content: '';
+				width: 0;
+				height: 1px;
+				background-color: #c4d702;
+				bottom: 0;
+				left: 0;
+			}
+		&:hover{
+			&::before{
+				position: absolute;
+				content: '';
+				width: 100%;
+				height: 1px;
+				background-color: #c4d702;
+				bottom: 0;
+				left: 0;
+				transition: width 0.3s ease;
+			}
+			color: #fff;
+		}
+	}
+}
+.social {
+
+		// .social__text
+
+		&__text {
+		}
+
+		// .social__icons
+
+		&__icons {
+		}
+}

@@ -570,6 +570,138 @@ legend {
   }
 }
 
+.footer {
+  position: relative;
+  background-color: hsl(45, 17%, 50%);
+}
+@media (min-width: 86.5625em) {
+  .footer {
+    padding-top: 5.6875rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 86.5625em) {
+  @supports (padding-top: clamp( 3.125rem , 2.3550469484rem  +  3.8497652582vw , 5.6875rem )) {
+    .footer {
+      padding-top: clamp( 3.125rem , 2.3550469484rem  +  3.8497652582vw , 5.6875rem );
+    }
+  }
+  @supports not (padding-top: clamp( 3.125rem , 2.3550469484rem  +  3.8497652582vw , 5.6875rem )) {
+    .footer {
+      padding-top: calc(3.125rem + 2.5625 * (100vw - 20rem) / 66.5625);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .footer {
+    padding-top: 3.125rem;
+  }
+}
+@media (min-width: 86.5625em) {
+  .footer {
+    padding-bottom: 5.0625rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 86.5625em) {
+  @supports (padding-bottom: clamp( 2.5rem , 1.7300469484rem  +  3.8497652582vw , 5.0625rem )) {
+    .footer {
+      padding-bottom: clamp( 2.5rem , 1.7300469484rem  +  3.8497652582vw , 5.0625rem );
+    }
+  }
+  @supports not (padding-bottom: clamp( 2.5rem , 1.7300469484rem  +  3.8497652582vw , 5.0625rem )) {
+    .footer {
+      padding-bottom: calc(2.5rem + 2.5625 * (100vw - 20rem) / 66.5625);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .footer {
+    padding-bottom: 2.5rem;
+  }
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/Texture3.png");
+  background-position: top;
+  background-size: auto;
+  background-repeat: repeat;
+  opacity: 1;
+  z-index: 9;
+}
+.footer::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #000;
+  opacity: 0.4;
+}
+.footer__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: normal;
+  z-index: 20;
+  font-family: "Forum";
+  font-weight: 400;
+}
+.footer__nav {
+  width: 100%;
+  height: auto;
+}
+.menu-footer {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+.menu-footer__column {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.menu-footer__column-title {
+  font-size: 33px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+.menu-footer__submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.menu-footer__submenu-link {
+  position: relative;
+}
+.menu-footer__submenu-link::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 1px;
+  background-color: #c4d702;
+  bottom: 0;
+  left: 0;
+}
+.menu-footer__submenu-link:hover::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #c4d702;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s ease;
+}
+.menu-footer__submenu-link:hover {
+  color: #fff;
+}
+
 .body {
   margin: 0 auto;
 }
@@ -1737,6 +1869,7 @@ h2 {
   background-repeat: no-repeat;
   background-size: 100%;
   background-size: contain;
+  z-index: 20;
 }
 .we-do__images-container picture:first-child::after {
   background-image: url("../img/cup1.png") type("image/png");
@@ -2411,6 +2544,17 @@ h2 {
     gap: 0.9375rem;
   }
 }
+.list-tea-made li.list-tea-made__item:nth-child(1) .list-tea-made__image picture img {
+  transition: all 0.5s linear;
+}
+.list-tea-made li.list-tea-made__item:nth-child(2) .list-tea-made__image picture img {
+  transition: all 0.5s linear;
+  transition-delay: 0.01s;
+}
+.list-tea-made li.list-tea-made__item:nth-child(3) .list-tea-made__image picture img {
+  transition: all 0.5s linear;
+  transition-delay: 0.02s;
+}
 .list-tea-made__description {
   gap: 12px;
 }
@@ -2888,8 +3032,8 @@ h2 {
   font-family: "Forum";
 }
 .products-image-list__description {
-  font-size: 14px;
-  line-height: 1.4285714286;
+  font-size: 1rem;
+  line-height: 1.25;
   font-family: "Roboto";
   max-height: 65px;
   overflow: hidden;
@@ -2911,6 +3055,9 @@ h2 {
   top: -5%;
 }
 
+.three::before {
+  display: none;
+}
 .three::after {
   position: absolute;
   content: "";

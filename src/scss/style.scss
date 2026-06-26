@@ -13,6 +13,7 @@
 
 // Підключення стилів окремих сторінок
 @use "home";
+
 .body{
 	margin: 0 auto;
 
@@ -34,20 +35,12 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		// @include image-set("../img/Texture.png", 0);
-		// background-image: url("../img/icons/sprite.svg#Texture");
 		background-image: url("../img/Texture3.png");
 		background-position: top;
 		background-size:auto;
 		background-repeat: repeat;
-		// background-clip: content-box;
 		opacity: 1;
-		// mix-blend-mode: multiply;
-		// background-blend-mode: multiply; 
-		// filter:contrast(0.5);
-	// 	filter:grayscale(3%);
-	// transform: scale(2);
-	z-index: 9;
+		z-index: 9;
 	}
 
 	@supports (overflow: clip) {
@@ -520,6 +513,7 @@ h2{
 			left: -7%;
 			@include image-set("../img/kettle.png", 0);
 			background-size: contain;
+			z-index: 20;
 		}
 
 		picture:first-child::after{
@@ -788,6 +782,26 @@ h2{
 		// gap: 47px;
 		@include adaptiveValue("gap", 47,15, 0, 1440, 769);
 	}
+	
+	& li.list-tea-made__item:nth-child(1){
+		& .list-tea-made__image picture img{
+			transition: all 0.5s linear;
+		}
+	}
+	& li.list-tea-made__item:nth-child(2){
+		& .list-tea-made__image picture img{
+			transition: all 0.5s linear;
+			transition-delay: 0.01s;
+		}
+	}
+	& li.list-tea-made__item:nth-child(3){
+		& .list-tea-made__image picture img{
+			transition: all 0.5s linear;
+			transition-delay: 0.02s;
+		}
+	}
+
+	// &__item list-tea-made__image
 
 	// .list-tea-made__image
 
@@ -830,6 +844,14 @@ h2{
 		vertical-align: middle;
 	}
 }
+	
+	// .list-tea-made li.list-tea-made__item:nth-child(1){
+	// 	// .list-tea-made__item.list-tea-made__image{
+	// 		transition: all 0.3s ease;
+	// 		transition-delay: 2s;
+	// 		background-color: red;
+	// 	// }
+	// }
 
 // ------------------------------------------------------------------
 
@@ -1002,8 +1024,8 @@ h2{
 		font-family: "Forum";
 	}
 	&__description{
-		font-size: 14px;
-		line-height: calc(20/14);
+		font-size: 1rem;
+		line-height: calc(20/16);
 		font-family: "Roboto";
 		max-height: 65px;
 		overflow: hidden;
@@ -1032,6 +1054,9 @@ h2{
 		}
 }
 .three{
+	&::before{
+		display: none;
+	}
 	&::after{
 			position: absolute;
 			content: '';

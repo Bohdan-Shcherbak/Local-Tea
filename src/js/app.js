@@ -1,4 +1,5 @@
 import './functions/burger.mjs';
+import './functions/parallax.js';
 
 
 const menuItem = document.querySelectorAll('.menu__item');
