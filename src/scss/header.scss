@@ -33,8 +33,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
 
-        &.active{
-            // display: block;
+        .menu-open &{
             height: auto;
             transition: all 0.3s ease;
             padding: 5px 40px 10px 10px;
@@ -391,16 +390,16 @@
             transition: all 0.3s ease;
         }
     }
+    // search__icon
     &__icon{
-        // display:block;
         position:absolute;
         right: 0;
-        top: 0;
+        top: 4px;
         color: rgb(196, 215, 2);
         width: 26px;
         height: 27px;
         cursor: pointer;
-// z-index: 40;
+
         use{
         }
         @media (hover:hover){
@@ -450,8 +449,8 @@
 			height: rem(2);
 			// background-color: #726a51;
 			background-color: rgb(196, 215, 2);
-        z-index:31;
-			&.active {
+            z-index:31;
+			.menu-open & {
 				background-color: rgb(196, 215, 2);
 			}
 		}
@@ -468,7 +467,7 @@
 			top: calc(50% - rem(1));
 		}
 
-		&.active {
+		.menu-open & {
 			span {
 				width: 0;
 			}

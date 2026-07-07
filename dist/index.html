@@ -127,7 +127,7 @@
     </div>
 </header>
         <main class="page">
-            <section class="tea-shop" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+            <section class="tea-shop" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center" data-prlx-media="768,min">
                 <div class="tea-shop__container">
                     <div class="tea-shop__information-container information-container">
                         <div class="information-container__name">
@@ -152,12 +152,12 @@
                         <picture class="picture tea-shop__image">
                                 <source srcset="./img/image1.avif" type="image/avif">
                                 <source srcset="./img/image1.webp" type="image/webp">
-                                <img src="./img/image1.png" alt='image1' loading="lazy" width="356" height="459" data-prlx data-direction="-1" data-coefficient="110" data-axis="h">
+                                <img src="./img/image1.png" alt='image1' loading="lazy" width="356" height="459" data-prlx data-direction="-1" data-coefficient="150" data-axis="h">
                         </picture>
                     </div>
                 </div>
             </section>
-            <section class="we-do" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+            <section class="we-do" data-prlx-media="768,min" data-prlx-parent="768,min" data-prlx-smooth="15" data-prlx-center="center">
                 <div class="we-do__container">
                     <div class="we-do__images-container">
                         <picture class="picture we-do__image">
@@ -196,7 +196,7 @@
                         <img src="./img/relaxingTea/1.png" alt='1' loading="lazy" width="715" height="910">
                     </picture>
             </section>
-            <section class="tea-made" data-prlx-parent data-prlx-smooth="5" data-prlx-center="center">
+            <section class="tea-made" data-prlx-parent data-prlx-smooth="5" data-prlx-center="center" data-prlx-media="768,min">
                 <div class="tea-made__container">
                     <ul class="tea-made__list list-tea-made">
                         <li class="list-tea-made__item">
@@ -283,7 +283,7 @@
                 <div class="products__container">
                     <h2 class="products__title">Our Products</h2>
                     <ul class="products__list products-image-list">
-                        <li class="products-image-list__item" id="1" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+                        <li class="products-image-list__item" id="1" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center" data-prlx-media="768,min">
                             <div class="products-image-list__image one">
                                 <picture>
                                     <source srcset="./img/products/1.avif" type="image/avif">
@@ -299,7 +299,7 @@
                                 nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
                             </div>
                         </li>
-                        <li class="products-image-list__item" id="2" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+                        <li class="products-image-list__item" id="2" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center" data-prlx-media="768,min">
                             <div class="products-image-list__image two">
                                 <picture>
                                     <source srcset="./img/products/2.avif" type="image/avif">
@@ -315,7 +315,7 @@
                                 nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
                             </div>
                         </li>
-                        <li class="products-image-list__item" id="3" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+                        <li class="products-image-list__item" id="3" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center" data-prlx-media="768,min">
                             <div class="products-image-list__image three">
                                 <picture>
                                     <source srcset="./img/products/3.avif" type="image/avif">
@@ -331,7 +331,7 @@
                                 nisi ut aliquip ex ea commodo consequat. Duis aute irure</p>
                             </div>
                         </li>
-                        <li class="products-image-list__item" id="4" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+                        <li class="products-image-list__item" id="4" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center" data-prlx-media="768,min">
                             <div class="products-image-list__image four">
                                 <picture>
                                     <source srcset="./img/products/4.avif" type="image/avif">
@@ -350,7 +350,7 @@
                     </ul>
                 </div>
             </sections>
-            <secction class="arrivals" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center">
+            <secction class="arrivals" data-prlx-parent data-prlx-smooth="15" data-prlx-center="center" data-prlx-media="768,min">
                 <div class="arrivals__container">
                     <h2 class="arrivals__title">NEW ARRIVALS</h2>
                     <ul class="arrivals__list list-arrivals">
@@ -500,9 +500,13 @@
     <footer class="footer">
     <div class="footer__container">
         <nav class="footer__nav" aria-label="Меню футера">
-            <ul class="footer__menu menu-footer">
+            <!-- <ul class="footer__menu menu-footer" data-spollers="767.98,max" data-one-spoller data-spollers-speed="300">
                 <li class="menu-footer__column">
-                    <h3 class="menu-footer__column-title">Our Services</h3>
+                        <h3 class="menu-footer__title"> <button type="button" data-spoller class="menu-footer__button _active">
+                            Our Services
+                        </button> </h3>
+
+                        
                     <ul class="menu-footer__submenu">
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">What’s New</a></li>
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">How to Order</a></li>
@@ -511,7 +515,12 @@
                     </ul>
                 </li>
                 <li class="menu-footer__column">
-                    <h3 class="menu-footer__column-title">Our Team</h3>
+                        <h3 class="menu-footer__title">  Our Team</h3>
+
+                        <button type="button" data-spoller class="menu-footer__button">
+                            Our Team
+                        </button>
+
                     <ul class="menu-footer__submenu">
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Our Local Farms</a></li>
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Craftmanship</a></li>
@@ -520,7 +529,11 @@
                     </ul>
                 </li>
                 <li class="menu-footer__column">
-                    <h3 class="menu-footer__column-title">About Us</h3>
+                    <h3 class="menu-footer__title">About Us</h3>
+
+                    <button type="button" data-spoller class="menu-footer__button">
+                            
+                        </button>
                     <ul class="menu-footer__submenu">
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Who We Are</a></li>
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">What We Do</a></li>
@@ -529,11 +542,75 @@
                     </ul>
                 </li>
                 <li class="menu-footer__column">
-                    <h3 class="menu-footer__column-title">Legal</h3>
+                    <h3 class="menu-footer__title">Legal</h3>
+
+                    <button type="button" data-spoller class="menu-footer__button">
+                        Legal
+                    </button>
                     <ul class="menu-footer__submenu">
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Privacy Policy</a></li>
                         <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Terms & Conditions</a></li>
                     </ul>
+                </li>
+            </ul> -->
+            <ul class="footer__menu menu-footer">
+                <li class="menu-footer__item">
+                    <details name="spoiler" class="menu-footer__spoiler">
+                        <summary class="menu-footer__spoiler-title">
+                            <h3>Our Services</h3>
+                        </summary>
+                        <div class="menu-footer__spoiler-content">
+                            <ul class="menu-footer__submenu">
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">What’s New</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">How to Order</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Payment Method</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Order Status</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </li>
+                <li class="menu-footer__item">
+                    <details name="spoiler" class="menu-footer__spoiler">
+                        <summary class="menu-footer__spoiler-title">
+                            <h3>Our Team</h3>
+                        </summary>
+                        <div class="menu-footer__spoiler-content">
+                            <ul class="menu-footer__submenu">
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Our Local Farms</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Craftmanship</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Our Resources</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Sustainability</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </li>
+                <li class="menu-footer__item">
+                    <details name="spoiler" class="menu-footer__spoiler">
+                        <summary class="menu-footer__spoiler-title">
+                            <h3>About Us</h3>
+                        </summary>
+                        <div class="menu-footer__spoiler-content">
+                            <ul class="menu-footer__submenu">
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Who We Are</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">What We Do</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Careers</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Sponsors</a></li>
+                            </ul>
+                        </div>
+                    </details>
+                </li>
+                <li class="menu-footer__item">
+                    <details name="spoiler" class="menu-footer__spoiler">
+                        <summary class="menu-footer__spoiler-title">
+                            <h3>Legal</h3>
+                        </summary>
+                        <div class="menu-footer__spoiler-content">
+                            <ul class="menu-footer__submenu">
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Privacy Policy</a></li>
+                                <li class="menu-footer__submenu-item"><a href="" class="menu-footer__submenu-link">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </details>
                 </li>
             </ul>
         </nav>

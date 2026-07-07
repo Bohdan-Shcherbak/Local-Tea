@@ -1,5 +1,8 @@
-import './functions/burger.mjs';
-import './functions/parallax.js';
+import {menuInit} from'./functions/burger.mjs';
+import *as modules from './modules.mjs';
+import './functions/parallax.mjs'
+// import { spollers } from './functions/spoilers.mjs';
+menuInit();
 
 
 const menuItem = document.querySelectorAll('.menu__item');

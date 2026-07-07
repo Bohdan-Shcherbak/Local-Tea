@@ -13,11 +13,38 @@
 
 // Підключення стилів окремих сторінок
 @use "home";
+	
+body{
 
-.body{
-	margin: 0 auto;
+	// Скролл заблоковано
+	.lock & {
+			position: relative;
+			overflow: hidden;
+			touch-action: none;
+			overscroll-behavior: none;
 
+			&::after{
+				position: absolute;
+				content: '';
+				top: 0;
+				left: 0;
+				display: flex;
+				// width: 100vw;
+				// height: 100vh;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				z-index: 10;
+				transition: all 0.5s ease;
+				// filter: blur(10px);
+				backdrop-filter: blur(2px)
+			}
+		}
+
+	// Сайт завантажений
+	.loaded & {}
 }
+
 .wrapper {
 	position: relative;
 	min-height: 100%;

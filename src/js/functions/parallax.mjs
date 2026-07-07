@@ -1,4 +1,4 @@
-import { flsModules } from '../modules.js';
+import { flsModules } from '../modules.mjs';
 
 class Parallax {
 	constructor(elements) {
@@ -86,6 +86,33 @@ Parallax.Each = class {
 		}
 	}
 }
-if (document.querySelectorAll('[data-prlx-parent]')) {
-	flsModules.parallax = new Parallax(document.querySelectorAll('[data-prlx-parent]'));
+// if (document.querySelectorAll('[data-prlx-parent]')) {
+// 	flsModules.parallax = new Parallax(document.querySelectorAll('[data-prlx-parent]'));
+// }
+
+// Знаходимо всі батьківські секції паралаксу
+const parallaxParents = document.querySelectorAll('[data-prlx-parent]');
+
+if (parallaxParents.length) {
+	// Залишаємо в масиві тільки ті секції, де паралакс ДОЗВОЛЕНИЙ на поточному екрані
+	const activeParents = Array.from(parallaxParents).filter(parent => {
+		// Якщо атрибута немає, значить паралакс працює завжди і на всіх екранах
+		if (!parent.dataset.prlxMedia) return true;
+
+		// Розбиваємо рядок "768,min" на масив: breakpoint = "768", type = "min"
+		const [breakpoint, type] = parent.dataset.prlxMedia.split(',');
+		
+		// Автоматично збираємо стандартний медіа-запит, наприклад: "(min-width: 768px)" або "(max-width: 768px)"
+		const mediaQueryString = `(${type.trim()}-width: ${breakpoint.trim()}px)`;
+
+		// Перевіряємо, чи збігається поточний екран з умовою. 
+		// Якщо збігається (true) — паралакс запуститься. Якщо ні (false) — секція ігнорується.
+		return window.matchMedia(mediaQueryString).matches;
+	});
+
+	// Запускаємо паралакс тільки для дозволених секцій
+	if (activeParents.length) {
+		flsModules.parallax = new Parallax(activeParents);
+	}
 }
+

@@ -1,38 +1,63 @@
 (() => {
+  // src/js/modules.mjs
+  var flsModules = {};
+  var bodyLockStatus = true;
+  var bodyLockToggle = (delay = 500) => {
+    if (document.documentElement.classList.contains("lock")) {
+      bodyUnlock(delay);
+    } else {
+      bodyLock(delay);
+    }
+  };
+  var bodyUnlock = (delay = 500) => {
+    let body = document.querySelector("body");
+    if (bodyLockStatus) {
+      let lock_padding = document.querySelectorAll("[data-lp]");
+      setTimeout(() => {
+        for (let index = 0; index < lock_padding.length; index++) {
+          const el = lock_padding[index];
+          el.style.paddingRight = "0px";
+        }
+        body.style.paddingRight = "0px";
+        document.documentElement.classList.remove("lock");
+      }, delay);
+      bodyLockStatus = false;
+      setTimeout(function() {
+        bodyLockStatus = true;
+      }, delay);
+    }
+  };
+  var bodyLock = (delay = 500) => {
+    let body = document.querySelector("body");
+    if (bodyLockStatus) {
+      let lock_padding = document.querySelectorAll("[data-lp]");
+      for (let index = 0; index < lock_padding.length; index++) {
+        const el = lock_padding[index];
+        el.style.paddingRight = window.innerWidth - document.querySelector(".wrapper").offsetWidth + "px";
+      }
+      body.style.paddingRight = window.innerWidth - document.querySelector(".wrapper").offsetWidth + "px";
+      document.documentElement.classList.add("lock");
+      bodyLockStatus = false;
+      setTimeout(function() {
+        bodyLockStatus = true;
+      }, delay);
+    }
+  };
+
   // src/js/functions/burger.mjs
-  var menuItem = document.querySelectorAll(".menu__item");
-  var iconMenu = document.querySelector(".icon-menu");
-  var headerMenu = document.querySelector(".header__menu");
-  function iconMenuReset() {
-    if (menuItem) {
-      menuItem.forEach((e) => {
-        e.classList.remove("beforeColor");
-        e.children[0].classList.remove("color");
-        e.children[1].classList.remove("display");
+  function menuInit() {
+    if (document.querySelector(".icon-menu")) {
+      document.addEventListener("click", function(e) {
+        if (bodyLockStatus && e.target.closest(".icon-menu")) {
+          bodyLockToggle();
+          document.documentElement.classList.toggle("menu-open");
+        }
       });
     }
+    ;
   }
-  if (iconMenu) {
-    iconMenu.addEventListener("click", () => {
-      iconMenu.classList.toggle("active");
-      headerMenu.classList.toggle("active");
-      document.body.classList.toggle("lock");
-      iconMenuReset();
-    });
-  }
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".menu") && !e.target.closest(".item-container") && !e.target.closest(".icon-menu")) {
-      iconMenuReset();
-      iconMenu.classList.remove("active");
-      headerMenu.classList.remove("active");
-      document.body.classList.remove("lock");
-    }
-  });
 
-  // src/js/modules.js
-  var flsModules = {};
-
-  // src/js/functions/parallax.js
+  // src/js/functions/parallax.mjs
   var Parallax = class _Parallax {
     constructor(elements) {
       if (elements.length) {
@@ -111,19 +136,29 @@
       }
     }
   };
-  if (document.querySelectorAll("[data-prlx-parent]")) {
-    flsModules.parallax = new Parallax(document.querySelectorAll("[data-prlx-parent]"));
+  var parallaxParents = document.querySelectorAll("[data-prlx-parent]");
+  if (parallaxParents.length) {
+    const activeParents = Array.from(parallaxParents).filter((parent) => {
+      if (!parent.dataset.prlxMedia) return true;
+      const [breakpoint, type] = parent.dataset.prlxMedia.split(",");
+      const mediaQueryString = `(${type.trim()}-width: ${breakpoint.trim()}px)`;
+      return window.matchMedia(mediaQueryString).matches;
+    });
+    if (activeParents.length) {
+      flsModules.parallax = new Parallax(activeParents);
+    }
   }
 
   // src/js/app.js
-  var menuItem2 = document.querySelectorAll(".menu__item");
+  menuInit();
+  var menuItem = document.querySelectorAll(".menu__item");
   var menu = document.querySelector(".menu");
   var itemContainer = document.querySelectorAll(".item-container");
   var search = document.querySelector(".search");
   var searchIcon = document.querySelector(".search__icon");
   var searchInput = document.querySelector(".search__input");
   function itemBlock() {
-    menuItem2.forEach((e) => {
+    menuItem.forEach((e) => {
       if (window.innerWidth > 991.68) {
         e.addEventListener("mouseenter", () => {
           e.children[0].classList.add("color");

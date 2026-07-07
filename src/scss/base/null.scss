@@ -34,40 +34,12 @@ a:active {
 :active {
 	outline: none;
 }
+
 html,
 body {
 	height: 100%;
 	min-width: $minWidth + px;
 	interpolate-size: allow-keywords;
-	
-
-	// Скролл заблоковано
-	.lock {
-		position: relative;
-		overflow: hidden;
-		touch-action: none;
-		overscroll-behavior: none;
-		// display: flex;
-		// filter: blur(10px);
-		// z-index: 10;
-
-		&::after{
-			position: absolute;
-			content: '';
-			top: 0;
-			left: 0;
-			display: flex;
-			// width: 100vw;
-			// height: 100vh;
-			width: 100%;
-			height: 100%;
-			background-color: rgba(0, 0, 0, 0.5);
-			z-index: 10;
-			transition: all 0.5s ease;
-			// filter: blur(10px);
-			backdrop-filter: blur(2px)
-		}
-	}
 }
 
 body {
