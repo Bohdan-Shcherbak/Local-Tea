@@ -1,6 +1,5 @@
 (() => {
   // src/js/modules.mjs
-  var flsModules = {};
   var bodyLockStatus = true;
   var bodyLockToggle = (delay = 500) => {
     if (document.documentElement.classList.contains("lock")) {
@@ -57,10 +56,11 @@
     ;
   }
 
-  // src/js/functions/parallax.mjs
+  // src/js/functions/parallax2.mjs
   var Parallax = class _Parallax {
     constructor(elements) {
-      if (elements.length) {
+      this.elements = [];
+      if (elements && elements.length) {
         this.elements = Array.from(elements).map((el) => new _Parallax.Each(el, this.options));
       }
     }
@@ -83,15 +83,24 @@
       this.offset = 0;
       this.value = 0;
       this.smooth = parent.dataset.prlxSmooth ? Number(parent.dataset.prlxSmooth) : 15;
+      this.isActive = false;
       this.setEvents();
     }
     setEvents() {
-      this.animationID = window.requestAnimationFrame(this.animation);
+      if (!this.isActive) {
+        this.isActive = true;
+        this.animationID = window.requestAnimationFrame(this.animation);
+      }
     }
     destroyEvents() {
+      this.isActive = false;
       window.cancelAnimationFrame(this.animationID);
+      this.elements.forEach((el) => {
+        el.style.transform = "";
+      });
     }
     animationFrame() {
+      if (!this.isActive) return;
       const topToWindow = this.parent.getBoundingClientRect().top;
       const heightParent = this.parent.offsetHeight;
       const heightWindow = window.innerHeight;
@@ -102,22 +111,18 @@
       const centerPoint = this.parent.dataset.prlxCenter ? this.parent.dataset.prlxCenter : "center";
       if (positionParent.top < 30 && positionParent.bottom > -30) {
         switch (centerPoint) {
-          // верхній точці (початок батька стикається верхнього краю екрану)
           case "top":
             this.offset = -1 * topToWindow;
             break;
-          // центрі екрана (середина батька у середині екрана)
           case "center":
             this.offset = heightWindow / 2 - (topToWindow + heightParent / 2);
             break;
-          // Початок: нижня частина екрана = верхня частина батька
           case "bottom":
             this.offset = heightWindow - (topToWindow + heightParent);
             break;
         }
       }
       this.value += (this.offset - this.value) / this.smooth;
-      this.animationID = window.requestAnimationFrame(this.animation);
       this.elements.forEach((el) => {
         const parameters = {
           axis: el.dataset.axis ? el.dataset.axis : "v",
@@ -127,6 +132,9 @@
         };
         this.parameters(el, parameters);
       });
+      if (this.isActive) {
+        this.animationID = window.requestAnimationFrame(this.animation);
+      }
     }
     parameters(el, parameters) {
       if (parameters.axis == "v") {
@@ -137,17 +145,32 @@
     }
   };
   var parallaxParents = document.querySelectorAll("[data-prlx-parent]");
-  if (parallaxParents.length) {
-    const activeParents = Array.from(parallaxParents).filter((parent) => {
-      if (!parent.dataset.prlxMedia) return true;
-      const [breakpoint, type] = parent.dataset.prlxMedia.split(",");
-      const mediaQueryString = `(${type.trim()}-width: ${breakpoint.trim()}px)`;
-      return window.matchMedia(mediaQueryString).matches;
-    });
-    if (activeParents.length) {
-      flsModules.parallax = new Parallax(activeParents);
+  var flsModules = { parallax: null };
+  function screnCheck() {
+    if (flsModules.parallax) {
+      flsModules.parallax.destroyEvents();
+      flsModules.parallax = null;
+    }
+    if (parallaxParents.length) {
+      const activeParents = Array.from(parallaxParents).filter((parent) => {
+        if (!parent.dataset.prlxMedia) return true;
+        const [breakpoint, type] = parent.dataset.prlxMedia.split(",");
+        const mediaQueryString = `(${type.trim()}-width: ${breakpoint.trim()}px)`;
+        return window.matchMedia(mediaQueryString).matches;
+      });
+      if (activeParents.length) {
+        flsModules.parallax = new Parallax(activeParents);
+      }
     }
   }
+  screnCheck();
+  var resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      screnCheck();
+    }, 150);
+  });
 
   // src/js/app.js
   menuInit();
@@ -190,5 +213,29 @@
       input.classList.toggle("width");
     });
   }
+  var image_block = document.querySelectorAll("[data-image-deg]");
+  function imageDeg() {
+    if (image_block) {
+      image_block.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+        const scrolledCalculated = (window.innerHeight - rect.top) * -0.03 + 25;
+        element.style.setProperty("--scroll-y", `${scrolledCalculated}deg`);
+      });
+    }
+  }
+  function screnCheck2() {
+    if (window.innerWidth >= 991) {
+      window.addEventListener("scroll", imageDeg);
+    } else {
+      window.removeEventListener("scroll", imageDeg);
+      if (image_block) {
+        image_block.forEach((element) => {
+          element.style.setProperty("--scroll-y", "0deg");
+        });
+      }
+    }
+  }
+  screnCheck2();
+  window.addEventListener("resize", screnCheck2);
 })();
 //# sourceMappingURL=app.js.map

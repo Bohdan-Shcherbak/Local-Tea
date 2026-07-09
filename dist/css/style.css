@@ -895,22 +895,35 @@ legend {
 }
 
 .button {
-  display: block;
+  display: flex;
   width: 9.6875rem;
   height: 2.375rem;
   background-color: #c2d502;
+  color: #726a51;
   border-radius: 19px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  backface-visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  /* Інші ваші стилі (padding, background тощо) */
+  transition: all 0.5s ease;
+  will-change: transform; /* Готує GPU до анімації */
+}
+.button span {
   font-size: 21px;
   line-height: 120%;
-  color: #726a51;
   font-weight: 400;
   font-family: "Forum";
-  transition: 0.3s ease;
+  will-change: transform; /* Захищає текст від розмиття */
+  transform: translateZ(0); /* Форсує 3D-шар для тексту */
 }
 .button:hover {
   background-color: rgb(114, 106, 81);
   color: #c2d502;
-  transition: 0.3s ease;
+  transform: perspective(1px) scale(1.08);
+  transition: all 0.5s ease;
 }
 
 @media (min-width: 86.5625em) {
@@ -2006,6 +2019,8 @@ h2 {
   background-size: 100%;
   background-size: contain;
   z-index: 20;
+  transform: scaleX(-1) rotate(var(--scroll-y));
+  transition: all 0.5s ease;
 }
 .we-do__images-container picture:first-child::after {
   background-image: url("../img/cup1.png") type("image/png");
@@ -2068,6 +2083,7 @@ h2 {
 }
 .we-do__image {
   position: relative;
+  --scroll-y: 0deg;
 }
 .we-do__image img {
   aspect-ratio: 349.63/453;
@@ -2085,6 +2101,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  --scroll-y: 0deg;
 }
 .relaxing-tea::before {
   position: absolute;
@@ -2136,7 +2153,6 @@ h2 {
 }
 .relaxing-tea::before {
   left: 50%;
-  transform: translateX(-50%);
 }
 @media (min-width: 90em) {
   .relaxing-tea::before {
@@ -2170,6 +2186,8 @@ h2 {
   background-position: 0;
   background-repeat: no-repeat;
   z-index: 50;
+  transform: translateX(-50%) rotate(var(--scroll-y));
+  transition: all 0.5s ease;
 }
 @media (max-width: 48em) {
   .relaxing-tea::before {
@@ -2781,6 +2799,7 @@ h2 {
 .products__container {
   z-index: 20;
   position: relative;
+  --scroll-y: 0deg;
 }
 .products__container::before {
   position: absolute;
@@ -2842,7 +2861,8 @@ h2 {
   }
 }
 .products__container::before {
-  transform: scaleX(-1) translateY(-50%);
+  transform: scaleX(-1) translateY(-50%) rotate(var(--scroll-y));
+  transition: all 0.5s ease;
 }
 @media (max-width: 48em) {
   .products__container::before {
@@ -3171,7 +3191,7 @@ h2 {
   font-size: 1rem;
   line-height: 1.25;
   font-family: "Roboto";
-  max-height: 65px;
+  max-height: 60px;
   overflow: hidden;
 }
 @media (max-width: 48em) {
@@ -3984,6 +4004,9 @@ h2 {
     padding-bottom: 3.125rem;
   }
 }
+.your-email {
+  --scroll-y: 0deg;
+}
 .your-email::before, .your-email::after {
   position: absolute;
   content: "";
@@ -4028,6 +4051,8 @@ h2 {
   background-repeat: no-repeat;
   background-size: 100%;
   background-size: contain;
+  transform: scaleX(-1) rotate(var(--scroll-y));
+  transition: all 0.5s ease;
 }
 .your-email::after {
   background-image: url("../img/cup1.png") type("image/png");

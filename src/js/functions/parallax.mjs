@@ -18,7 +18,6 @@ class Parallax {
 			el.setEvents();
 		})
 	}
-
 }
 Parallax.Each = class {
 	constructor(parent) {
@@ -37,6 +36,7 @@ Parallax.Each = class {
 		window.cancelAnimationFrame(this.animationID);
 	}
 	animationFrame() {
+		this.animationID = window.requestAnimationFrame(this.animation);
 		const topToWindow = this.parent.getBoundingClientRect().top;
 		const heightParent = this.parent.offsetHeight;
 		const heightWindow = window.innerHeight;
@@ -66,7 +66,7 @@ Parallax.Each = class {
 		}
 
 		this.value += (this.offset - this.value) / this.smooth;
-		this.animationID = window.requestAnimationFrame(this.animation);
+		// this.animationID = window.requestAnimationFrame(this.animation);
 
 		this.elements.forEach(el => {
 			const parameters = {
@@ -93,26 +93,43 @@ Parallax.Each = class {
 // Знаходимо всі батьківські секції паралаксу
 const parallaxParents = document.querySelectorAll('[data-prlx-parent]');
 
-if (parallaxParents.length) {
-	// Залишаємо в масиві тільки ті секції, де паралакс ДОЗВОЛЕНИЙ на поточному екрані
-	const activeParents = Array.from(parallaxParents).filter(parent => {
-		// Якщо атрибута немає, значить паралакс працює завжди і на всіх екранах
-		if (!parent.dataset.prlxMedia) return true;
+function screnCheck(){
+	window.addEventListener("resize", () => {
+		if(window.innerWidth >= 991){
+			if (parallaxParents.length) {
+				// Залишаємо в масиві тільки ті секції, де паралакс ДОЗВОЛЕНИЙ на поточному екрані
+				const activeParents = Array.from(parallaxParents).filter(parent => {
+				// Якщо атрибута немає, значить паралакс працює завжди і на всіх екранах
+				if (!parent.dataset.prlxMedia) return true;
 
-		// Розбиваємо рядок "768,min" на масив: breakpoint = "768", type = "min"
-		const [breakpoint, type] = parent.dataset.prlxMedia.split(',');
+				// Розбиваємо рядок "768,min" на масив: breakpoint = "768", type = "min"
+				const [breakpoint, type] = parent.dataset.prlxMedia.split(',');
 		
-		// Автоматично збираємо стандартний медіа-запит, наприклад: "(min-width: 768px)" або "(max-width: 768px)"
-		const mediaQueryString = `(${type.trim()}-width: ${breakpoint.trim()}px)`;
+				// Автоматично збираємо стандартний медіа-запит, наприклад: "(min-width: 768px)" або "(max-width: 768px)"
+				const mediaQueryString = `(${type.trim()}-width: ${breakpoint.trim()}px)`;
 
-		// Перевіряємо, чи збігається поточний екран з умовою. 
-		// Якщо збігається (true) — паралакс запуститься. Якщо ні (false) — секція ігнорується.
-		return window.matchMedia(mediaQueryString).matches;
-	});
+				// Перевіряємо, чи збігається поточний екран з умовою. 
+				// Якщо збігається (true) — паралакс запуститься. Якщо ні (false) — секція ігнорується.
+				return window.matchMedia(mediaQueryString).matches;
+				});
 
-	// Запускаємо паралакс тільки для дозволених секцій
-	if (activeParents.length) {
-		flsModules.parallax = new Parallax(activeParents);
-	}
+				// Запускаємо паралакс тільки для дозволених секцій
+				if (activeParents.length) {
+					flsModules.parallax = new Parallax(activeParents);
+				}
+			}
+} else{
+	flsModules.parallax.destroyEvents();
 }
+})}
 
+// window.addEventListener('change', ()=>{
+// 	if (parallaxParents.length) {
+// 		activeParents
+// 	}
+// })
+screnCheck();
+// window.addEventListener("change", ()=>{
+// 	flsModules.parallax.destroyEvents();
+// 	// screnCheck();
+// });

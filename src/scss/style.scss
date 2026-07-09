@@ -104,22 +104,38 @@ body{
 }
 
 .button {
-	display: block;
+	display: flex;
 	width: rem(155);
 	height: rem(38);
 	background-color: #c2d502;		
-	border-radius: 19px;
-	font-size: 21px;
-	line-height: 120%;
 	color: #726a51;
-	font-weight: 400;
-	font-family: "Forum";
-	transition: 0.3s ease;
 
+	border-radius: 19px;
+	
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+
+	align-items: center;
+	justify-content: center;
+	/* Інші ваші стилі (padding, background тощо) */
+	transition: all 0.5s ease;
+	will-change: transform; /* Готує GPU до анімації */
+
+	& span{
+		font-size: 21px;
+		line-height: 120%;
+		font-weight: 400;
+		font-family: "Forum";
+		will-change: transform; /* Захищає текст від розмиття */
+		transform: translateZ(0); /* Форсує 3D-шар для тексту */
+	}
 	&:hover{
 		background-color: rgba(114, 106, 81, 1);
 		color: #c2d502;
-		transition: 0.3s ease;
+		transform: perspective(1px) scale(1.08);
+		transition: all 0.5s ease;
 	}
 }
 
@@ -526,6 +542,7 @@ h2{
 			background-repeat: no-repeat;
 			background-position: top;
 			transform: scaleX(-1);
+			
 
 			@media (max-width:$mobile){
 				&{
@@ -541,6 +558,8 @@ h2{
 			@include image-set("../img/kettle.png", 0);
 			background-size: contain;
 			z-index: 20;
+			transform:scaleX(-1) rotate(var(--scroll-y));
+			transition: all 0.5s ease;
 		}
 
 		picture:first-child::after{
@@ -556,7 +575,7 @@ h2{
 // we-do__image
 	&__image{
 		position: relative;
-
+		--scroll-y: 0deg;
 		& img{
 			aspect-ratio: 349.63/453;
 		}
@@ -583,6 +602,7 @@ h2{
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
+	--scroll-y: 0deg;
 
 	&::before{
 		position: absolute;
@@ -590,13 +610,15 @@ h2{
 		@include adaptiveValue("width", 210, 100);
 		@include adaptiveValue("height", 178, 68);	
 		left: 50%;
-		transform: translateX(-50%);
 		@include adaptiveValue("bottom", 100,-10, 0, 1440, 769);
 		@include image-set("../img/kettle.png", 0);
 		background-size: contain;
 		background-position: 0;
 		background-repeat: no-repeat;
 		z-index: 50;
+
+		transform: translateX(-50%) rotate(var(--scroll-y));
+		transition: all 0.5s ease;
 
 		@media (max-width:$mobile){
 			&{
@@ -905,6 +927,8 @@ h2{
 		// display: flex;
 		z-index: 20;
 		position: relative;
+		--scroll-y: 0deg;
+
 
 		&::before{
 			position: absolute;
@@ -918,7 +942,8 @@ h2{
 			z-index: 30;
 			@include adaptiveValue("width", 243, 90);
 			@include adaptiveValue("height", 206, 58);	
-			transform: scaleX(-1) translateY(-50%);
+			transform: scaleX(-1) translateY(-50%) rotate(var(--scroll-y));
+			transition: all 0.5s ease;
 
 			@media (max-width:$mobile){
 				&{
@@ -1054,7 +1079,7 @@ h2{
 		font-size: 1rem;
 		line-height: calc(20/16);
 		font-family: "Roboto";
-		max-height: 65px;
+		max-height: 60px;
 		overflow: hidden;
 		@media (max-width:$mobile){
 			&{
@@ -1429,7 +1454,7 @@ h2{
 	position: relative;
 	@include adaptiveValue("padding-top", 99,50);
 	@include adaptiveValue("padding-bottom", 77,50);
-
+	--scroll-y: 0deg;
 	&::before,
 	&::after{
 			position: absolute;
@@ -1453,6 +1478,9 @@ h2{
 			// left: 47px;
 			@include image-set("../img/kettle.png", 0);
 			background-size: contain;
+
+			transform: scaleX(-1) rotate(var(--scroll-y));
+			transition: all 0.5s ease;
 		}
 
 		&::after{
