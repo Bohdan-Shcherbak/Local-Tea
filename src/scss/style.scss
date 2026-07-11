@@ -29,14 +29,11 @@ body{
 				top: 0;
 				left: 0;
 				display: flex;
-				// width: 100vw;
-				// height: 100vh;
 				width: 100%;
 				height: 100%;
 				background-color: rgba(0, 0, 0, 0.5);
 				z-index: 10;
 				transition: all 0.5s ease;
-				// filter: blur(10px);
 				backdrop-filter: blur(2px)
 			}
 		}
@@ -52,7 +49,6 @@ body{
 	flex-direction: column;
 	overflow: hidden;
 	margin: 0 auto;
-	// background-color: rgb(114, 106, 81);
 	background-color: hsl(45, 17%, 50%);
 
 	&::before{
@@ -109,17 +105,13 @@ body{
 	height: rem(38);
 	background-color: #c2d502;		
 	color: #726a51;
-
 	border-radius: 19px;
-	
 	-webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
     backface-visibility: hidden;
-
 	align-items: center;
 	justify-content: center;
-	/* Інші ваші стилі (padding, background тощо) */
 	transition: all 0.5s ease;
 	will-change: transform; /* Готує GPU до анімації */
 
@@ -144,8 +136,6 @@ h2{
 	line-height: calc(98/90);
 	font-family: "Forum";
 	text-align: center;
-	
-
 }
 .text-block {
     color: #c4d702;
@@ -233,12 +223,11 @@ h2{
 			background-size: cover;
 			background-position: 0;
 			background-repeat: no-repeat;
-	
 			z-index: -8;
 			@media (min-width:1441px){
-			&{
-				left: 90px;
-			}
+				&{
+					left: 90px;
+				}
 			}
 			@media (max-width:766px){
 				&{
@@ -296,7 +285,6 @@ h2{
 				}
 			}
 		}
-
 	}
 }
 
@@ -309,7 +297,6 @@ h2{
 	max-width: 535px;
 	font-family: "Forum";
 	font-weight: 400;
-	
 
 	&::before,
 	&::after{
@@ -529,9 +516,9 @@ h2{
 				}
 			}
 			@media (max-width:$mobile){
-			&{
-				display: none;
-			}
+				&{
+					display: none;
+				}
 			}
 		}
 		
@@ -543,7 +530,6 @@ h2{
 			background-position: top;
 			transform: scaleX(-1);
 			
-
 			@media (max-width:$mobile){
 				&{
 					display: none;
@@ -579,7 +565,6 @@ h2{
 		& img{
 			aspect-ratio: 349.63/453;
 		}
-		
 	}
 
 	// .we-do__text
@@ -616,7 +601,6 @@ h2{
 		background-position: 0;
 		background-repeat: no-repeat;
 		z-index: 50;
-
 		transform: translateX(-50%) rotate(var(--scroll-y));
 		transition: all 0.5s ease;
 
@@ -660,14 +644,11 @@ h2{
 		justify-content: center;
 		flex-direction: column;
 		max-width: 454px;
-		
-		// transform: translateX(-50%);
 		margin: 0 auto 0 auto;
 	}
 	// relaxing-tea__link
 	&__link{
 		position: absolute;
-		// bottom: 100px;
 		@include adaptiveValue("bottom", 100,10, 0, 1024, 769);
 		font-size: 1rem;
 		line-height: calc(16/20);
@@ -707,14 +688,6 @@ h2{
 		&::before{
 			position: absolute;
 			content: '';
-			// top: 0;
-			// left: 0;
-
-			// @include adaptiveValue("left", 140, 0, 1, 1440, 991.98);
-			// @include adaptiveValue("left", -100, -100, 0, 1440, 991);
-			// @include adaptiveValue("left", -125, -100, 1, 991.98, 767.98);
-			// bottom: -54px;	
-			// left: -100%;
 			left: 0;
 			transform: translateX(-50%);
 			top: 0;
@@ -747,8 +720,6 @@ h2{
 // ==============================================================
 
 .tea-made {
-	// padding-top: 195px;
-	// padding-bottom: 89px;
 	@include adaptiveValue("padding-top", 195,50);
 	@include adaptiveValue("padding-bottom",89, 50);
 
@@ -767,6 +738,7 @@ h2{
 			background-size: cover;
 			background-repeat: no-repeat;
 			z-index: -1;
+
 			@media (max-width:1365px){
 				&{
 					display: none;
@@ -784,11 +756,11 @@ h2{
 				}
 			}
 		}
+
 		&::before{
 			top: -100px;
 			left: 148px;
 			@include adaptiveValue("top", -100,-30);
-			
 			
 			@media (max-width:1130px){
 				&{
@@ -828,7 +800,6 @@ h2{
 		min-width: 247px;
 		display: flex;
 		flex-direction: column;
-		// gap: 47px;
 		@include adaptiveValue("gap", 47,15, 0, 1440, 769);
 	}
 	
@@ -849,8 +820,6 @@ h2{
 			transition-delay: 0.02s;
 		}
 	}
-
-	// &__item list-tea-made__image
 
 	// .list-tea-made__image
 
@@ -893,14 +862,6 @@ h2{
 		vertical-align: middle;
 	}
 }
-	
-	// .list-tea-made li.list-tea-made__item:nth-child(1){
-	// 	// .list-tea-made__item.list-tea-made__image{
-	// 		transition: all 0.3s ease;
-	// 		transition-delay: 2s;
-	// 		background-color: red;
-	// 	// }
-	// }
 
 // ------------------------------------------------------------------
 
@@ -924,11 +885,9 @@ h2{
 
 	// .products__container
 	&__container {
-		// display: flex;
 		z-index: 20;
 		position: relative;
 		--scroll-y: 0deg;
-
 
 		&::before{
 			position: absolute;
@@ -973,8 +932,6 @@ h2{
 			background-repeat: no-repeat;
 			@include adaptiveValue("width", 53,20);
 			@include adaptiveValue("height",75,40);
-			// @include adaptiveValue("right", 145, 100);
-			// @include adaptiveValue("bottom", -80, -50);
 			bottom: -10px;
 			right: 20%;
 
@@ -991,8 +948,6 @@ h2{
 			background-repeat: no-repeat;
 			@include adaptiveValue("width", 53,20);
 			@include adaptiveValue("height",75,40);
-			// @include adaptiveValue("right", 145, 100);
-			// @include adaptiveValue("bottom", -80, -50);
 			bottom: -25px;
 			right: 15%;
 
@@ -1008,7 +963,6 @@ h2{
 	// .products__list
 
 	&__list {
-		// margin-top: 150px;
 		@include adaptiveValue("margin-top", 150,50);
 	}
 }
@@ -1018,9 +972,7 @@ h2{
 	flex-direction: row;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	// gap: 130px 20px;
 	column-gap: 30px;
-	
 	@include adaptiveValue("row-gap", 130,50);
 
 	@media (max-width:$mobile){
@@ -1069,9 +1021,7 @@ h2{
 		text-align: left;
 	}
 	&__title {
-		// font-size: 47px;
 		@include adaptiveValue("font-size", 47,20);
-
 		line-height: calc(111/47);
 		font-family: "Forum";
 	}
@@ -1086,41 +1036,38 @@ h2{
 				max-height:max-content;
 			}
 		}
-
 	}
 }
+
 .one{
 	&::before{
-			// left: -50px;
-			left: -5%;
-			top: 0;
-			transform: translateY(145%);
-		}
+		left: -5%;
+		top: 0;
+		transform: translateY(145%);
+	}
 }
 .two{
 	&::before{
-			// left: -50px;
-			left: -10%;
-			top: -5%;
-			// transform: translateY(145%);
-		}
+		left: -10%;
+		top: -5%;
+	}
 }
 .three{
 	&::before{
 		display: none;
 	}
 	&::after{
-			position: absolute;
-			content: '';
-			@include adaptiveValue("width", 330,100);
-			@include adaptiveValue("height", 262, 100);
-			@include image-set("../img/flowers.png", 0);
-			background-position: 0;
-			background-size: cover;
-			background-repeat: no-repeat;
-			z-index: -1;
-			right: -10%;
-			top: -8%;
+		position: absolute;
+		content: '';
+		@include adaptiveValue("width", 330,100);
+		@include adaptiveValue("height", 262, 100);
+		@include image-set("../img/flowers.png", 0);
+		background-position: 0;
+		background-size: cover;
+		background-repeat: no-repeat;
+		z-index: -1;
+		right: -10%;
+		top: -8%;
 	}
 }
 .four{
@@ -1153,7 +1100,6 @@ h2{
 		}
 	}
 
-
 	// .arrivals__title
 
 	&__title {
@@ -1162,17 +1108,11 @@ h2{
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		// padding-left: 10px;
-		// padding-right: 10px;
 	}
 
 	// .arrivals__list
 
 	&__list {
-		// justify-content: last baseline;
-
-		// margin-top: 70px;
-		// margin-bottom: 70px;
 		position: relative;
 		height: 100%;
 		display: flex;
@@ -1180,8 +1120,6 @@ h2{
 		@media (max-width:$mobile){
 			&{
 				flex-direction: column;
-				// align-items: center;
-				// justify-content: center;
 			}
 		}
 
@@ -1225,7 +1163,6 @@ h2{
 			@include adaptiveValue("width", 62,20);
 			aspect-ratio: 62/90;
 			filter: brightness(1.5);
-			// right: 40px;
 			right: 2.5%;
 			bottom: -25px;
 			transform: rotate(-5deg) translateY(50%);
@@ -1236,18 +1173,13 @@ h2{
 
 				}
 			}
-			// @media (max-width:1024px){
-			// 	&{
-			// 		top: auto;
-			// 		bottom: 125px;
-			// 	}
-			// }
 		}
 	}
 }
 .list-arrivals {
 	gap: 26px;
 	@include adaptiveValue("gap", 26, 10, 1, 1440, 800);
+
 	// .list-arrivals__item
 
 	&__item {
@@ -1269,9 +1201,7 @@ h2{
 		img{
 			width: 100%;
 		}
-		
 	}
-	
 
 	// .list-arrivals__text-block
 
@@ -1283,12 +1213,8 @@ h2{
 	// .list-arrivals__title
 
 	&__title {
-		// margin-top: 39px;
 		font-size: 28px;
-		// @include adaptiveValue("font-size", 28,25, 0, 1440,768);
 		margin-bottom: em(15, 28);
-
-		// line-height: calc(106/28);
 		line-height: 1.2;
 		font-family: "Forum";
 
@@ -1303,7 +1229,6 @@ h2{
 	// .list-arrivals__text
 
 	&__text {
-		// max-width: 872px;
 		max-height: 115px;
 		font-size: 14px;
 		line-height: 1.4;
@@ -1343,7 +1268,6 @@ h2{
 		top: 0;
 		right: 0;
 		transform: translateX(50%);
-	
 	}
 
 	// .testimonials__container
@@ -1368,7 +1292,6 @@ h2{
 		width: 100%;
 		row-gap: 114px;
 		@include adaptiveValue("row-gap", 114,50);
-		// column-gap: 10px;
 		margin-top: 78px;
 		@include adaptiveValue("margin-top", 78,50);
 
@@ -1381,14 +1304,12 @@ h2{
 		&::before{
 			position:absolute;
 			content:'';
-
 			@include adaptiveValue("width", 330,100);
 			@include adaptiveValue("height", 262, 100);
 			@include image-set("../img/flowers.png", 0);
 			background-size: cover;
 			background-position: 0;
 			background-repeat: no-repeat;
-
 			left: 0;
 			bottom: 0;	
 			transform: translate(-68%,70%);
@@ -1410,7 +1331,6 @@ h2{
 		flex: 0 1 calc(50% - 10px);
 		max-width: 466px;
 		min-width: 200px;
-
 		font-weight: 400;
 		text-align: left;
 		overflow: hidden;
@@ -1430,21 +1350,17 @@ h2{
 		max-width: 451px;
 		max-height: 83px;
 		@include adaptiveValue("max-height", 83,70, 0, 1440, 768);
-
-
-		// font-size: 22px;
 		@include adaptiveValue("font-size", 22,14);
-
 		line-height: 1.4;
 		font-family: "Roboto";
 		@include adaptiveValue("margin-top", 35,10);
 		overflow: hidden;
 
 		@media (max-width:$mobile){
-				&{
-					@include adaptiveValue("max-height", 70,55, 0, 768, 320);
-				}
+			&{
+				@include adaptiveValue("max-height", 70,55, 0, 768, 320);
 			}
+		}
 	}
 }
 
@@ -1457,111 +1373,104 @@ h2{
 	--scroll-y: 0deg;
 	&::before,
 	&::after{
+		position: absolute;
+		content: '';
+		background-repeat: no-repeat;
+		background-position: top;
+		transform: scaleX(-1);
+
+		@media (max-width:$mobile){
+			&{
+				display: none;
+			}
+		}
+	}
+
+	&::before{
+		@include adaptiveValue("width", 172,122, 0, 1440, 768);
+		aspect-ratio: 172/146;
+		top: 50px;
+		left: 3.3%;
+		@include image-set("../img/kettle.png", 0);
+		background-size: contain;
+		transform: scaleX(-1) rotate(var(--scroll-y));
+		transition: all 0.5s ease;
+	}
+
+	&::after{
+		@include image-set("../img/cup1.png", 0);
+		background-size: contain;
+		@include adaptiveValue("width", 38,20);
+		aspect-ratio: 38/53;
+		top: 43%;
+		@include adaptiveValue("left", 200,135, 0, 1440, 769);
+		filter: brightness(1.5);
+	}
+
+// .your-email__container
+
+	&__container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		@include adaptiveValue("gap", 33,25);
+
+		&::before,
+		&::after{
 			position: absolute;
 			content: '';
+			@include image-set("../img/cup1.png", 0);
 			background-repeat: no-repeat;
 			background-position: top;
-			transform: scaleX(-1);
+			background-size: contain;
 
-			@media (max-width:$mobile){
+			@media (max-width:600px){
 				&{
 					display: none;
 				}
 			}
 		}
 		&::before{
-			@include adaptiveValue("width", 172,122, 0, 1440, 768);
-			aspect-ratio: 172/146;
-			top: 50px;
-			
-			left: 3.3%;
-			// left: 47px;
-			@include image-set("../img/kettle.png", 0);
-			background-size: contain;
-
-			transform: scaleX(-1) rotate(var(--scroll-y));
-			transition: all 0.5s ease;
+			@include adaptiveValue("width", 65,15);
+			aspect-ratio: 65/93;
+			right: 6%;
+			bottom: 33px;
+			filter: brightness(1.5);
+			transform: rotate(10deg);
+			@media (max-width:$mobile){
+				&{
+					top: -60px;
+					right: 10%;
+				}
+			}
 		}
 
 		&::after{
-			@include image-set("../img/cup1.png", 0);
-			background-size: contain;
-			@include adaptiveValue("width", 38,20);
-			aspect-ratio: 38/53;
-			top: 43%;
-			@include adaptiveValue("left", 200,135, 0, 1440, 769);
+			@include adaptiveValue("width", 67,15);
+			aspect-ratio: 67/89;
 			filter: brightness(1.5);
-		}
-
-// .your-email__container
-
-		&__container {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			@include adaptiveValue("gap", 33,25);
-
-			&::before,
-			&::after{
-				position: absolute;
-				content: '';
-				@include image-set("../img/cup1.png", 0);
-				background-repeat: no-repeat;
-				background-position: top;
-				background-size: contain;
-
-	
-				@media (max-width:600px){
-					&{
-						display: none;
-					}
-				}
-			}
-			&::before{
-				@include adaptiveValue("width", 65,15);
-				aspect-ratio: 65/93;
-				right: 6%;
-				bottom: 33px;
-				filter: brightness(1.5);
-				transform: rotate(10deg);
-				@media (max-width:$mobile){
-					&{
-						top: -60px;
-						right: 10%;
-					}
-				}
-			}
-	
-			&::after{
-				@include adaptiveValue("width", 67,15);
-				aspect-ratio: 67/89;
-				filter: brightness(1.5);
-				// right: 40px;
-				// top: 30px;
-				
-				// @include adaptiveValue("right", 0,40);
-				right: 0.5%;
-				bottom: -5px;
-				transform: rotate(-10deg);
-				@media (max-width:$mobile){
-					&{
-						top: -20px;
-					}
+			right: 0.5%;
+			bottom: -5px;
+			transform: rotate(-10deg);
+			@media (max-width:$mobile){
+				&{
+					top: -20px;
 				}
 			}
 		}
+	}
 
-		// .your-email__title
+	// .your-email__title
 
-		&__title {
-		}
+	&__title {
+	}
 
-		// .your-email__form
+	// .your-email__form
 
-		&__form {
-		}
+	&__form {
+	}
 }
 .form-your-email {
 	display: flex;
@@ -1578,14 +1487,23 @@ h2{
 	}
 		// .form-your-email__input
 
-		&__input {
-			width: 100%;
-			// max-width: 442px;
-			height: 58px;
-			@include adaptiveValue("height", 58,38);
-			border: 2px solid #c1d502;
-			padding-left: 12px;
-			padding-right: 12px;
+	&__input {
+		width: 100%;
+		// max-width: 442px;
+		height: 58px;
+		@include adaptiveValue("height", 58,38);
+		border: 2px solid #c1d502;
+		padding-left: 12px;
+		padding-right: 12px;
+		font-size: 30px;
+		line-height: 100%;
+		color: #fff;
+		font-weight: 400;
+		font-family: "Forum";
+		text-align: center;
+		vertical-align: middle;
+
+		&::placeholder{
 			font-size: 30px;
 			line-height: 100%;
 			color: #fff;
@@ -1593,22 +1511,13 @@ h2{
 			font-family: "Forum";
 			text-align: center;
 			vertical-align: middle;
+			opacity: 0.4;
+		}
 
-			&::placeholder{
-				font-size: 30px;
-				line-height: 100%;
-				color: #fff;
-				font-weight: 400;
-				font-family: "Forum";
-				text-align: center;
-				vertical-align: middle;
-				opacity: 0.4;
-			}
-
-			@media (max-width:$mobile){
-				&{
-					border: 1px solid #c1d502;
-				}
+		@media (max-width:$mobile){
+			&{
+				border: 1px solid #c1d502;
 			}
 		}
+	}
 }

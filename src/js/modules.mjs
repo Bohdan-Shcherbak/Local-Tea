@@ -1,4 +1,5 @@
-export const flsModules = {};
+// Створюємо єдиний об'єкт для збереження екземпляру модуля
+export const flsModules = { parallax: null }; 
 // ХЕШ ==================================================
 export function getHash() {
 	if (location.hash) { return location.hash.replace('#', ''); }
@@ -185,23 +186,4 @@ export let bodyLock = (delay = 500) => {
 		}, delay);
 	}
 }
-// // Модуль роботи з меню (бургер) =======================================================================================================================================================================================================================
-// export function menuInit() {
-//     if (document.querySelector(".icon-menu")) {
-//         document.addEventListener("click", function (e) {
-//             if (bodyLockStatus && e.target.closest('.icon-menu')) {
-//                 bodyLockToggle();
-//                 document.documentElement.classList.toggle("menu-open");
-//             }
-//         });
-//     };
-// }
-// export function menuOpen() {
-//     bodyLock();
-//     document.documentElement.classList.add("menu-open");
-// }
-// export function menuClose() {
-//     bodyUnlock();
-//     document.documentElement.classList.remove("menu-open");
-// }
 

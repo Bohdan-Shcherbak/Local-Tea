@@ -1,5 +1,6 @@
 (() => {
   // src/js/modules.mjs
+  var flsModules = { parallax: null };
   var bodyLockStatus = true;
   var bodyLockToggle = (delay = 500) => {
     if (document.documentElement.classList.contains("lock")) {
@@ -47,16 +48,19 @@
   function menuInit() {
     if (document.querySelector(".icon-menu")) {
       document.addEventListener("click", function(e) {
+        const isMenuOpen = document.documentElement.classList.contains("menu-open");
         if (bodyLockStatus && e.target.closest(".icon-menu")) {
           bodyLockToggle();
           document.documentElement.classList.toggle("menu-open");
+        } else if (bodyLockStatus && isMenuOpen && !e.target.closest(".menu")) {
+          document.documentElement.classList.remove("menu-open");
+          bodyLockToggle();
         }
       });
     }
-    ;
   }
 
-  // src/js/functions/parallax2.mjs
+  // src/js/functions/parallax.mjs
   var Parallax = class _Parallax {
     constructor(elements) {
       this.elements = [];
@@ -111,12 +115,15 @@
       const centerPoint = this.parent.dataset.prlxCenter ? this.parent.dataset.prlxCenter : "center";
       if (positionParent.top < 30 && positionParent.bottom > -30) {
         switch (centerPoint) {
+          // верхній точці (початок батька стикається верхнього краю екрану)
           case "top":
             this.offset = -1 * topToWindow;
             break;
+          // центрі екрана (середина батька у середині екрана)
           case "center":
             this.offset = heightWindow / 2 - (topToWindow + heightParent / 2);
             break;
+          // Початок: нижня частина екрана = верхня частина батька
           case "bottom":
             this.offset = heightWindow - (topToWindow + heightParent);
             break;
@@ -145,7 +152,6 @@
     }
   };
   var parallaxParents = document.querySelectorAll("[data-prlx-parent]");
-  var flsModules = { parallax: null };
   function screnCheck() {
     if (flsModules.parallax) {
       flsModules.parallax.destroyEvents();
@@ -175,36 +181,35 @@
   // src/js/app.js
   menuInit();
   var menuItem = document.querySelectorAll(".menu__item");
-  var menu = document.querySelector(".menu");
-  var itemContainer = document.querySelectorAll(".item-container");
   var search = document.querySelector(".search");
   var searchIcon = document.querySelector(".search__icon");
-  var searchInput = document.querySelector(".search__input");
   function itemBlock() {
-    menuItem.forEach((e) => {
-      if (window.innerWidth > 991.68) {
-        e.addEventListener("mouseenter", () => {
-          e.children[0].classList.add("color");
-          e.children[1].classList.add("display");
-        });
-        e.addEventListener("mouseleave", () => {
-          e.children[1].classList.remove("display");
-          e.children[0].classList.remove("color");
-        });
-      } else {
-        e.addEventListener("click", () => {
-          const active = e.parentElement.querySelector(".color")?.parentElement;
-          if (active && active !== e) {
-            active.children[0].classList.remove("color");
-            active.children[1].classList.remove("display");
-            active.classList.remove("beforeColor");
-          }
-          e.children[1].classList.toggle("display");
-          e.children[0].classList.toggle("color");
-          e.classList.toggle("beforeColor");
-        });
-      }
-    });
+    if (menuItem) {
+      menuItem.forEach((e) => {
+        if (window.innerWidth > 991.68) {
+          e.addEventListener("mouseenter", () => {
+            e.children[0].classList.add("color");
+            e.children[1].classList.add("display");
+          });
+          e.addEventListener("mouseleave", () => {
+            e.children[1].classList.remove("display");
+            e.children[0].classList.remove("color");
+          });
+        } else {
+          e.addEventListener("click", () => {
+            const active = e.parentElement.querySelector(".color")?.parentElement;
+            if (active && active !== e) {
+              active.children[0].classList.remove("color");
+              active.children[1].classList.remove("display");
+              active.classList.remove("beforeColor");
+            }
+            e.children[1].classList.toggle("display");
+            e.children[0].classList.toggle("color");
+            e.classList.toggle("beforeColor");
+          });
+        }
+      });
+    }
   }
   itemBlock();
   if (searchIcon) {
