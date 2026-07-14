@@ -40,8 +40,8 @@ export function funcBrowserSync (){
 }
 
 const development = app.gulp.series(app.gulp.parallel(images,styles, html), js, funcBrowserSync);
-// const build = app.gulp.series(reset, app.gulp.parallel(images,styles,html,sprites,fonts), js, funcBrowserSync);
-const build = html;
+const build = app.gulp.series(reset, app.gulp.parallel(images,styles,html,sprites,fonts), js, funcBrowserSync);
+
 const sprite = sprites;
 const font = fonts;
 
